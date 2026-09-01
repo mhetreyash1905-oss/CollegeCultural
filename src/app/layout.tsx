@@ -1,6 +1,9 @@
 import type { Metadata } from 'next';
 import { Inter, Fraunces } from 'next/font/google';
 import './globals.css';
+import Navbar from './components/Navbar';
+import Footer from './components/Footer';
+import NewsTicker from './components/NewsTicker';
 
 const inter = Inter({
   subsets: ['latin'],
@@ -29,7 +32,10 @@ export default function RootLayout({
   return (
     <html lang="en" className={`${inter.variable} ${fraunces.variable}`}>
       <body className="font-sans bg-indigo-base text-paper antialiased">
-        {children}
+        <Navbar />
+        <NewsTicker />
+        <main>{children}</main>
+        <Footer />
       </body>
     </html>
   );

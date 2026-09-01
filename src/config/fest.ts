@@ -8,5 +8,5 @@ export const FEST_CONFIG = {
   ],
   description: 'The biggest annual cultural festival of IIIT Allahabad.',
   cta: 'Register Now',
-  ctaLink: '#contact', // Placeholder link
+  ctaLink: '/contact',
 };

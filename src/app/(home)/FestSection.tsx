@@ -1,6 +1,7 @@
 import { FEST_CONFIG } from '@/config/fest';
 import Countdown from '@/app/components/Countdown';
 import ScrollAnimationWrapper from '@/app/components/ScrollAnimationWrapper';
+import Link from 'next/link';
 
 export default function FestSection() {
   return (
@@ -49,12 +50,12 @@ export default function FestSection() {
         </ScrollAnimationWrapper>
 
         <ScrollAnimationWrapper direction="up" delay={0.6}>
-          <a
+          <Link
             href={FEST_CONFIG.ctaLink}
             className="inline-block px-10 py-4 bg-[#FFC93C] text-[#1A0524] font-bold uppercase tracking-wider rounded-full hover:bg-white transition-colors duration-300 shadow-lg hover:shadow-xl"
           >
             {FEST_CONFIG.cta}
-          </a>
+          </Link>
         </ScrollAnimationWrapper>
       </div>
     </section>

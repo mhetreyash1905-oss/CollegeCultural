@@ -2,6 +2,7 @@
 
 import { useState, useEffect } from 'react';
 import { useReducedMotion, motion, useScroll, useTransform } from 'framer-motion';
+import Link from 'next/link';
 
 const media = [
   {
@@ -133,24 +134,24 @@ export default function Hero() {
         </motion.p>
         
         <div className="flex flex-col sm:flex-row gap-4 items-center justify-center">
-          <a
-            href="#societies"
+          <Link
+            href="/societies"
             className="bg-coral hover:bg-coral/90 text-paper rounded-full px-8 py-3 transition-colors text-lg font-medium inline-block w-full sm:w-auto"
           >
             Explore Societies
-          </a>
-          <a
-            href="#events"
+          </Link>
+          <Link
+            href="/events"
             className="border-2 border-marigold text-marigold hover:bg-marigold hover:text-indigo-base rounded-full px-8 py-3 transition-colors text-lg font-medium inline-block w-full sm:w-auto"
           >
             Upcoming Events
-          </a>
+          </Link>
         </div>
       </div>
 
       {/* Scroll Indicator */}
       <div className="absolute bottom-10 left-1/2 transform -translate-x-1/2 z-10">
-        <a href="#societies" className="text-paper/70 hover:text-paper transition-colors flex flex-col items-center" aria-label="Scroll down">
+        <Link href="#fest" className="text-paper/70 hover:text-paper transition-colors flex flex-col items-center" aria-label="Scroll down">
           <svg 
             className={`w-8 h-8 ${prefersReducedMotion ? '' : 'animate-bounce'}`} 
             fill="none" 
@@ -159,7 +160,7 @@ export default function Hero() {
           >
             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 14l-7 7m0 0l-7-7m7 7V3" />
           </svg>
-        </a>
+        </Link>
       </div>
     </section>
   );
