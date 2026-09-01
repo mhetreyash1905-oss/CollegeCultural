@@ -1,5 +1,6 @@
 import dbConnect from '@/lib/mongodb';
 import Event from '@/models/Event';
+import ScrollAnimationWrapper from '@/app/components/ScrollAnimationWrapper';
 
 export default async function Events() {
   await dbConnect();
@@ -16,10 +17,12 @@ export default async function Events() {
   };
 
   return (
-    <section id="events" className="section-padding max-w-5xl mx-auto">
-      <div className="text-center mb-16">
-        <h2 className="font-serif text-4xl md:text-5xl text-paper">Upcoming Events</h2>
-      </div>
+    <section id="events" className="section-padding max-w-5xl mx-auto overflow-hidden">
+      <ScrollAnimationWrapper direction="up">
+        <div className="text-center mb-16">
+          <h2 className="font-serif text-4xl md:text-5xl text-paper">Upcoming Events</h2>
+        </div>
+      </ScrollAnimationWrapper>
 
       <div className="relative">
         {/* Center line */}
@@ -29,8 +32,11 @@ export default async function Events() {
           {events.map((event: any, index: number) => {
             const isEven = index % 2 === 0;
             return (
-              <div key={event._id} className="relative flex items-center md:justify-between flex-col md:flex-row">
-                
+              <ScrollAnimationWrapper 
+                key={event._id}
+                direction={isEven ? 'right' : 'left'} 
+                className="relative flex items-center md:justify-between flex-col md:flex-row"
+              >
                 {/* Desktop Left / Mobile Right */}
                 <div className={`w-full pl-12 md:pl-0 md:w-[45%] ${isEven ? 'md:text-right md:pr-12' : 'md:order-2 md:pl-12'}`}>
                   <div className="bg-paper/5 backdrop-blur-sm border border-paper/10 rounded-xl p-6">
@@ -45,7 +51,7 @@ export default async function Events() {
                 
                 {/* Empty space for alternating layout on desktop */}
                 <div className={`hidden md:block w-[45%] ${isEven ? 'md:order-2' : ''}`}></div>
-              </div>
+              </ScrollAnimationWrapper>
             );
           })}
         </div>

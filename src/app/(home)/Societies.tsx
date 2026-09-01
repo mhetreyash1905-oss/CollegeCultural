@@ -1,5 +1,6 @@
 import dbConnect from '@/lib/mongodb';
 import Society from '@/models/Society';
+import ScrollAnimationWrapper, { StaggeredGrid } from '@/app/components/ScrollAnimationWrapper';
 
 export default async function Societies() {
   await dbConnect();
@@ -7,17 +8,19 @@ export default async function Societies() {
   const societies = JSON.parse(JSON.stringify(societiesData));
 
   return (
-    <section id="societies" className="section-padding max-w-7xl mx-auto">
-      <div className="text-center mb-12">
-        <h2 className="font-serif text-4xl md:text-5xl text-paper">Our Societies</h2>
-        <p className="text-paper/60 mt-4 text-lg">Discover the vibrant communities that make our cultural scene thrive</p>
-      </div>
+    <section id="societies" className="section-padding max-w-7xl mx-auto overflow-hidden">
+      <ScrollAnimationWrapper direction="up">
+        <div className="text-center mb-12">
+          <h2 className="font-serif text-4xl md:text-5xl text-paper">Our Societies</h2>
+          <p className="text-paper/60 mt-4 text-lg">Discover the vibrant communities that make our cultural scene thrive</p>
+        </div>
+      </ScrollAnimationWrapper>
 
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+      <StaggeredGrid className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
         {societies.map((society: any) => (
           <div 
             key={society._id} 
-            className="rounded-2xl overflow-hidden bg-paper/5 backdrop-blur-sm border border-paper/10 flex flex-col"
+            className="rounded-2xl overflow-hidden bg-paper/5 backdrop-blur-sm border border-paper/10 flex flex-col h-full"
             style={{ borderLeft: `4px solid ${society.accentColor || '#8b5cf6'}` }}
           >
             <img 
@@ -42,7 +45,7 @@ export default async function Societies() {
             </div>
           </div>
         ))}
-      </div>
+      </StaggeredGrid>
     </section>
   );
 }
