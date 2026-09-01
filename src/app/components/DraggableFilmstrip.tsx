@@ -51,7 +51,7 @@ export default function DraggableFilmstrip({ images }: DraggableFilmstripProps) 
             className="w-[280px] md:w-[400px] h-[350px] md:h-[500px] flex-shrink-0 relative rounded-2xl overflow-hidden group shadow-lg"
             data-lightbox
             data-src={image.imageUrl}
-            style={{ snapAlign: prefersReducedMotion ? 'center' : 'none' }}
+            style={{ scrollSnapAlign: prefersReducedMotion ? 'center' : 'none' } as React.CSSProperties}
           >
             <GalleryParallaxImage 
               src={image.imageUrl || '/placeholder.jpg'} 
