@@ -3,7 +3,7 @@ import Society from '@/models/Society';
 
 export default async function Societies() {
   await dbConnect();
-  const societiesData = await Society.find({}).lean();
+  const societiesData = await Society.find({}).sort({ order: 1 }).lean();
   const societies = JSON.parse(JSON.stringify(societiesData));
 
   return (

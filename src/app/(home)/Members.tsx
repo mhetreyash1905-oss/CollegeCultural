@@ -1,9 +1,9 @@
 import dbConnect from '@/lib/mongodb';
-import Member from '@/models/Member';
+import CouncilMember from '@/models/CouncilMember';
 
 export default async function Members() {
   await dbConnect();
-  const membersData = await Member.find({}).sort({ order: 1 }).lean();
+  const membersData = await CouncilMember.find({}).sort({ order: 1 }).lean();
   const members = JSON.parse(JSON.stringify(membersData));
 
   return (

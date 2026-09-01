@@ -1,9 +1,9 @@
 import dbConnect from '@/lib/mongodb';
-import GalleryItem from '@/models/Gallery';
+import GalleryImage from '@/models/GalleryImage';
 
 export default async function Gallery() {
   await dbConnect();
-  const imagesData = await GalleryItem.find({}).sort({ createdAt: -1 }).lean();
+  const imagesData = await GalleryImage.find({}).sort({ order: 1 }).lean();
   const images = JSON.parse(JSON.stringify(imagesData));
 
   return (

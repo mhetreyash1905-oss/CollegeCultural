@@ -4,7 +4,7 @@ export default function Footer() {
   const quickLinks = [
     { name: 'Societies', href: '#societies' },
     { name: 'Events', href: '#events' },
-    { name: 'Blog', href: '#blog' },
+    { name: 'Blog', href: '#blogs' },
     { name: 'Gallery', href: '#gallery' },
     { name: 'Team', href: '#team' },
     { name: 'Contact', href: '#contact' },
