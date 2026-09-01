@@ -3,11 +3,24 @@
 import { useState, useEffect } from 'react';
 import { useReducedMotion, motion, useScroll, useTransform } from 'framer-motion';
 
-const images = [
-  'https://images.unsplash.com/photo-1540575467063-178a50c2df87?auto=format&fit=crop&q=80',
-  'https://images.unsplash.com/photo-1501281668745-f7f57925c3b4?auto=format&fit=crop&q=80',
-  'https://images.unsplash.com/photo-1492684223066-81342ee5ff30?auto=format&fit=crop&q=80',
-  'https://images.unsplash.com/photo-1511512578047-dfb367046420?auto=format&fit=crop&q=80'
+const media = [
+  {
+    type: 'video',
+    src: 'https://joy1.videvo.net/videvo_files/video/free/2014-12/large_watermarked/Crowd_Pt_5_preview.mp4',
+    poster: 'https://images.unsplash.com/photo-1540575467063-178a50c2df87?auto=format&fit=crop&q=80'
+  },
+  {
+    type: 'image',
+    src: 'https://images.unsplash.com/photo-1501281668745-f7f57925c3b4?auto=format&fit=crop&q=80'
+  },
+  {
+    type: 'image',
+    src: 'https://images.unsplash.com/photo-1492684223066-81342ee5ff30?auto=format&fit=crop&q=80'
+  },
+  {
+    type: 'image',
+    src: 'https://images.unsplash.com/photo-1511512578047-dfb367046420?auto=format&fit=crop&q=80'
+  }
 ];
 
 export default function Hero() {
@@ -18,8 +31,8 @@ export default function Hero() {
     if (prefersReducedMotion) return;
     
     const timer = setInterval(() => {
-      setCurrentIndex((prevIndex) => (prevIndex + 1) % images.length);
-    }, 5000);
+      setCurrentIndex((prevIndex) => (prevIndex + 1) % media.length);
+    }, 6000);
 
     return () => clearInterval(timer);
   }, [prefersReducedMotion]);
@@ -27,38 +40,97 @@ export default function Hero() {
   const { scrollY } = useScroll();
   const y1 = useTransform(scrollY, [0, 1000], [0, 300]);
 
+  const titleText = "Cultural Council";
+  const titleWords = titleText.split(' ');
+
+  const containerVariants = {
+    hidden: { opacity: 0 },
+    visible: {
+      opacity: 1,
+      transition: { staggerChildren: 0.2, delayChildren: 0.1 }
+    }
+  };
+
+  const wordVariants = {
+    hidden: { opacity: 0, y: 20 },
+    visible: { opacity: 1, y: 0, transition: { duration: 0.8, ease: [0.2, 0.65, 0.3, 0.9] } }
+  };
+
   return (
-    <section id="hero" className="relative min-h-screen flex items-center justify-center overflow-hidden">
-      {/* Background Images */}
+    <section id="hero" className="relative min-h-screen flex items-center justify-center overflow-hidden bg-indigo-base">
+      {/* SVG Noise Texture Overlay */}
+      <div className="absolute inset-0 z-10 pointer-events-none opacity-[0.04]">
+        <svg xmlns="http://www.w3.org/2000/svg" width="100%" height="100%">
+          <filter id="noiseFilter">
+            <feTurbulence type="fractalNoise" baseFrequency="0.65" numOctaves="3" stitchTiles="stitch" />
+          </filter>
+          <rect width="100%" height="100%" filter="url(#noiseFilter)" />
+        </svg>
+      </div>
+
+      {/* Background Media */}
       <motion.div style={{ y: prefersReducedMotion ? 0 : y1 }} className="absolute inset-0 z-0">
-        {images.map((src, index) => (
+        {media.map((item, index) => (
           <div
-            key={src}
+            key={index}
             className={`absolute inset-0 transition-opacity duration-1000 ${index === currentIndex ? 'opacity-100' : 'opacity-0'}`}
           >
-            <img
-              src={src}
-              alt={`Hero background ${index + 1}`}
-              className="w-full h-[120%] -top-[10%] absolute object-cover"
-            />
+            {item.type === 'video' ? (
+              <video
+                src={item.src}
+                poster={item.poster}
+                autoPlay
+                loop
+                muted
+                playsInline
+                className="w-full h-[120%] -top-[10%] absolute object-cover"
+              />
+            ) : (
+              <img
+                src={item.src}
+                alt={`Hero background ${index + 1}`}
+                className="w-full h-[120%] -top-[10%] absolute object-cover"
+              />
+            )}
           </div>
         ))}
       </motion.div>
 
       {/* Dark Overlay */}
-      <div className="absolute inset-0 bg-black/50 z-0" />
+      <div className="absolute inset-0 bg-black/60 z-0" />
 
       {/* Content */}
-      <div className="relative z-10 text-center px-4 max-w-5xl mx-auto flex flex-col items-center">
-        <span className="tracking-[0.3em] text-sm text-marigold uppercase font-sans mb-4">
+      <div className="relative z-20 text-center px-4 max-w-5xl mx-auto flex flex-col items-center">
+        <motion.span 
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          transition={{ duration: 1, delay: 0.2 }}
+          className="tracking-[0.3em] text-sm text-marigold uppercase font-sans mb-4 drop-shadow-md"
+        >
           IIIT ALLAHABAD
-        </span>
-        <h1 className="font-serif text-6xl md:text-8xl font-bold text-paper mb-6">
-          Cultural Council
-        </h1>
-        <p className="text-xl md:text-2xl text-paper/80 mb-10 max-w-2xl">
+        </motion.span>
+        
+        <motion.h1 
+          variants={prefersReducedMotion ? {} : containerVariants}
+          initial="hidden"
+          animate="visible"
+          className="font-serif text-6xl md:text-8xl font-bold text-paper mb-6 flex flex-wrap justify-center gap-x-4 drop-shadow-lg"
+        >
+          {titleWords.map((word, i) => (
+            <motion.span key={i} variants={prefersReducedMotion ? {} : wordVariants} className="inline-block">
+              {word}
+            </motion.span>
+          ))}
+        </motion.h1>
+        
+        <motion.p 
+          initial={{ opacity: 0, y: 10 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.8, delay: 0.8 }}
+          className="text-xl md:text-2xl text-paper/90 mb-10 max-w-2xl drop-shadow-md"
+        >
           Where Creativity Meets Tradition
-        </p>
+        </motion.p>
         
         <div className="flex flex-col sm:flex-row gap-4 items-center justify-center">
           <a

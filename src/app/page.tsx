@@ -1,4 +1,5 @@
 import Hero from './(home)/Hero';
+import FestSection from './(home)/FestSection';
 import Societies from './(home)/Societies';
 import Events from './(home)/Events';
 import Blogs from './(home)/Blogs';
@@ -14,6 +15,7 @@ export default function HomePage() {
       <Navbar />
       <main>
         <Hero />
+        <FestSection />
         <Societies />
         <Events />
         <Blogs />
