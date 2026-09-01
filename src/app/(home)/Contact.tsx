@@ -63,11 +63,11 @@ export default function Contact() {
         <div className="grid grid-cols-1 md:grid-cols-2 gap-12">
           {/* Contact Form */}
           <ScrollAnimationWrapper direction="left">
-            <form onSubmit={handleSubmit} className="space-y-6">
+            <form onSubmit={handleSubmit} className="space-y-6 bg-white/5 backdrop-blur-2xl border border-white/10 p-8 rounded-3xl shadow-2xl">
               <div>
                 <label
                   htmlFor="name"
-                  className="block text-sm font-medium text-paper/80 mb-2"
+                  className="block text-sm font-medium text-white/70 mb-2 tracking-wide"
                 >
                   Name
                 </label>
@@ -78,7 +78,7 @@ export default function Contact() {
                   value={formData.name}
                   onChange={handleChange}
                   required
-                  className="w-full px-4 py-3 bg-paper/5 border border-paper/10 rounded-xl text-paper placeholder-paper/30 focus:outline-none focus:ring-2 focus:ring-violet focus:border-transparent transition-colors"
+                  className="w-full px-5 py-4 bg-white/5 border border-white/10 rounded-2xl text-white placeholder-white/30 focus:outline-none focus:ring-2 focus:ring-white/30 focus:bg-white/10 transition-all backdrop-blur-sm font-light"
                   placeholder="Your name"
                 />
               </div>
@@ -86,7 +86,7 @@ export default function Contact() {
               <div>
                 <label
                   htmlFor="email"
-                  className="block text-sm font-medium text-paper/80 mb-2"
+                  className="block text-sm font-medium text-white/70 mb-2 tracking-wide"
                 >
                   Email
                 </label>
@@ -97,7 +97,7 @@ export default function Contact() {
                   value={formData.email}
                   onChange={handleChange}
                   required
-                  className="w-full px-4 py-3 bg-paper/5 border border-paper/10 rounded-xl text-paper placeholder-paper/30 focus:outline-none focus:ring-2 focus:ring-violet focus:border-transparent transition-colors"
+                  className="w-full px-5 py-4 bg-white/5 border border-white/10 rounded-2xl text-white placeholder-white/30 focus:outline-none focus:ring-2 focus:ring-white/30 focus:bg-white/10 transition-all backdrop-blur-sm font-light"
                   placeholder="your@email.com"
                 />
               </div>
@@ -105,7 +105,7 @@ export default function Contact() {
               <div>
                 <label
                   htmlFor="message"
-                  className="block text-sm font-medium text-paper/80 mb-2"
+                  className="block text-sm font-medium text-white/70 mb-2 tracking-wide"
                 >
                   Message
                 </label>
@@ -116,7 +116,7 @@ export default function Contact() {
                   onChange={handleChange}
                   required
                   rows={5}
-                  className="w-full px-4 py-3 bg-paper/5 border border-paper/10 rounded-xl text-paper placeholder-paper/30 focus:outline-none focus:ring-2 focus:ring-violet focus:border-transparent transition-colors resize-none"
+                  className="w-full px-5 py-4 bg-white/5 border border-white/10 rounded-2xl text-white placeholder-white/30 focus:outline-none focus:ring-2 focus:ring-white/30 focus:bg-white/10 transition-all backdrop-blur-sm font-light resize-none"
                   placeholder="Your message..."
                 />
               </div>
@@ -124,19 +124,19 @@ export default function Contact() {
               <button
                 type="submit"
                 disabled={status === 'loading'}
-                className="w-full py-3 px-8 bg-coral hover:bg-coral/90 disabled:opacity-50 disabled:cursor-not-allowed text-paper font-semibold rounded-full transition-colors focus:outline-none focus:ring-2 focus:ring-coral focus:ring-offset-2 focus:ring-offset-indigo-base"
+                className="w-full py-4 px-8 bg-white/10 border border-white/20 hover:bg-white/20 disabled:opacity-50 disabled:cursor-not-allowed text-white font-medium tracking-wide rounded-full transition-all duration-300 focus:outline-none focus:ring-2 focus:ring-white/50 shadow-[0_0_20px_rgba(255,255,255,0.05)] hover:shadow-[0_0_30px_rgba(255,255,255,0.1)]"
               >
                 {status === 'loading' ? 'Sending...' : 'Send Message'}
               </button>
 
               {status === 'success' && (
-                <div className="p-4 bg-teal/10 border border-teal/30 rounded-xl text-teal text-sm" role="alert">
-                  ✓ Message sent successfully! We&apos;ll get back to you soon.
+                <div className="p-4 bg-teal/20 border border-teal/40 backdrop-blur-md rounded-2xl text-teal text-sm text-center" role="alert">
+                  ✓ Message sent successfully!
                 </div>
               )}
 
               {status === 'error' && (
-                <div className="p-4 bg-coral/10 border border-coral/30 rounded-xl text-coral text-sm" role="alert">
+                <div className="p-4 bg-coral/20 border border-coral/40 backdrop-blur-md rounded-2xl text-coral text-sm text-center" role="alert">
                   ✗ {errorMessage}
                 </div>
               )}
