@@ -1,0 +1,42 @@
+{
+  "name": "iiita-cultural-council",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Official website for the IIITA Cultural Council",
+  "scripts": {
+    "dev": "next dev",
+    "build": "next build",
+    "start": "next start",
+    "lint": "next lint",
+    "seed": "npx tsx src/lib/seed.ts"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/mhetreyash1905-oss/CollegeCultural.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/mhetreyash1905-oss/CollegeCultural/issues"
+  },
+  "homepage": "https://github.com/mhetreyash1905-oss/CollegeCultural#readme",
+  "dependencies": {
+    "framer-motion": "^13.1.1",
+    "mongoose": "^9.9.4",
+    "next": "^16.3.4",
+    "react": "^19.2.8",
+    "react-dom": "^19.2.8"
+  },
+  "devDependencies": {
+    "@tailwindcss/postcss": "^4.3.3",
+    "@types/node": "^26.4.1",
+    "@types/react": "^19.2.18",
+    "@types/react-dom": "^19.2.5",
+    "eslint": "^9.39.5",
+    "eslint-config-next": "^16.3.4",
+    "tailwindcss": "^4.3.3",
+    "tsx": "^4.23.13",
+    "typescript": "^6.0.3"
+  }
+}
