@@ -1,7 +1,7 @@
 'use client';
 
 import { useState, useEffect } from 'react';
-import { useReducedMotion } from 'framer-motion';
+import { useReducedMotion, motion, useScroll, useTransform } from 'framer-motion';
 
 const images = [
   'https://images.unsplash.com/photo-1540575467063-178a50c2df87?auto=format&fit=crop&q=80',
@@ -24,24 +24,29 @@ export default function Hero() {
     return () => clearInterval(timer);
   }, [prefersReducedMotion]);
 
+  const { scrollY } = useScroll();
+  const y1 = useTransform(scrollY, [0, 1000], [0, 300]);
+
   return (
     <section id="hero" className="relative min-h-screen flex items-center justify-center overflow-hidden">
       {/* Background Images */}
-      {images.map((src, index) => (
-        <div
-          key={src}
-          className={`absolute inset-0 transition-opacity duration-1000 ${index === currentIndex ? 'opacity-100' : 'opacity-0'}`}
-        >
-          <img
-            src={src}
-            alt={`Hero background ${index + 1}`}
-            className="w-full h-full object-cover"
-          />
-        </div>
-      ))}
+      <motion.div style={{ y: prefersReducedMotion ? 0 : y1 }} className="absolute inset-0 z-0">
+        {images.map((src, index) => (
+          <div
+            key={src}
+            className={`absolute inset-0 transition-opacity duration-1000 ${index === currentIndex ? 'opacity-100' : 'opacity-0'}`}
+          >
+            <img
+              src={src}
+              alt={`Hero background ${index + 1}`}
+              className="w-full h-[120%] -top-[10%] absolute object-cover"
+            />
+          </div>
+        ))}
+      </motion.div>
 
       {/* Dark Overlay */}
-      <div className="absolute inset-0 bg-black/50" />
+      <div className="absolute inset-0 bg-black/50 z-0" />
 
       {/* Content */}
       <div className="relative z-10 text-center px-4 max-w-5xl mx-auto flex flex-col items-center">

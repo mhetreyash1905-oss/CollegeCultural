@@ -1,5 +1,7 @@
 import dbConnect from '@/lib/mongodb';
 import GalleryImage from '@/models/GalleryImage';
+import ScrollAnimationWrapper, { StaggeredGrid } from '@/app/components/ScrollAnimationWrapper';
+import GalleryParallaxImage from '@/app/components/GalleryParallaxImage';
 
 export default async function Gallery() {
   await dbConnect();
@@ -7,12 +9,14 @@ export default async function Gallery() {
   const images = JSON.parse(JSON.stringify(imagesData));
 
   return (
-    <section id="gallery" className="section-padding max-w-7xl mx-auto">
-      <div className="text-center mb-12">
-        <h2 className="font-serif text-4xl md:text-5xl text-paper">Gallery</h2>
-      </div>
+    <section id="gallery" className="section-padding max-w-7xl mx-auto overflow-hidden">
+      <ScrollAnimationWrapper direction="up">
+        <div className="text-center mb-12">
+          <h2 className="font-serif text-4xl md:text-5xl text-paper">Gallery</h2>
+        </div>
+      </ScrollAnimationWrapper>
 
-      <div className="columns-2 md:columns-3 lg:columns-4 gap-4">
+      <StaggeredGrid className="columns-2 md:columns-3 lg:columns-4 gap-4">
         {images.map((image: any) => (
           <div 
             key={image._id} 
@@ -20,10 +24,9 @@ export default async function Gallery() {
             data-lightbox
             data-src={image.imageUrl}
           >
-            <img 
+            <GalleryParallaxImage 
               src={image.imageUrl || '/placeholder.jpg'} 
               alt={image.caption || 'Gallery Image'}
-              className="w-full object-cover block"
             />
             <div className="absolute inset-0 bg-black/40 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end">
               <p className="text-paper text-sm p-4 w-full">
@@ -32,7 +35,7 @@ export default async function Gallery() {
             </div>
           </div>
         ))}
-      </div>
+      </StaggeredGrid>
     </section>
   );
 }

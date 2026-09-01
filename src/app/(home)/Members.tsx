@@ -1,5 +1,6 @@
 import dbConnect from '@/lib/mongodb';
 import CouncilMember from '@/models/CouncilMember';
+import ScrollAnimationWrapper, { StaggeredGrid } from '@/app/components/ScrollAnimationWrapper';
 
 export default async function Members() {
   await dbConnect();
@@ -7,12 +8,14 @@ export default async function Members() {
   const members = JSON.parse(JSON.stringify(membersData));
 
   return (
-    <section id="team" className="section-padding max-w-6xl mx-auto">
-      <div className="text-center mb-12">
-        <h2 className="font-serif text-4xl md:text-5xl text-paper">Meet the Council</h2>
-      </div>
+    <section id="team" className="section-padding max-w-6xl mx-auto overflow-hidden">
+      <ScrollAnimationWrapper direction="up">
+        <div className="text-center mb-12">
+          <h2 className="font-serif text-4xl md:text-5xl text-paper">Meet the Council</h2>
+        </div>
+      </ScrollAnimationWrapper>
 
-      <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
+      <StaggeredGrid className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
         {members.map((member: any) => (
           <div key={member._id} className="text-center bg-paper/5 border border-paper/10 rounded-2xl p-6 flex flex-col items-center">
             <img 
@@ -24,7 +27,7 @@ export default async function Members() {
             <p className="text-sm text-paper/60">{member.role}</p>
           </div>
         ))}
-      </div>
+      </StaggeredGrid>
     </section>
   );
 }

@@ -12,14 +12,18 @@
   --font-serif: var(--font-fraunces), Georgia, serif;
 }
 
-/* Base styles */
-html {
-  scroll-behavior: smooth;
-}
-
-body {
-  background-color: var(--color-indigo-base);
-  color: var(--color-paper);
+@layer base {
+  html {
+    scroll-behavior: smooth;
+  }
+  
+  body {
+    @apply bg-indigo-base text-paper antialiased selection:bg-coral/30 selection:text-paper;
+  }
+  
+  a, button {
+    @apply focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-marigold focus-visible:ring-offset-2 focus-visible:ring-offset-indigo-base transition-shadow rounded-sm;
+  }
 }
 
 /* Custom scrollbar */
