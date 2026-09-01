@@ -5,14 +5,20 @@ export interface ICouncilMember extends Document {
   role: string;
   photoUrl: string;
   order: number;
+  tier: 'advisor' | 'leadership' | 'core' | 'society-head';
 }
 
 const CouncilMemberSchema = new Schema<ICouncilMember>(
   {
     name: { type: String, required: true, trim: true },
-    role: { type: String },
+    role: { type: String, required: true, trim: true },
     photoUrl: { type: String },
     order: { type: Number, default: 0 },
+    tier: { 
+      type: String, 
+      enum: ['advisor', 'leadership', 'core', 'society-head'],
+      default: 'core'
+    },
   },
   { timestamps: true }
 );

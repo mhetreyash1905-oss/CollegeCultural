@@ -172,14 +172,14 @@ const galleries = [
 ];
 
 const members = [
-  { name: 'Arjun Mehta', role: 'President', photoUrl: 'https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?w=600', order: 0 },
-  { name: 'Priya Sharma', role: 'Vice President', photoUrl: 'https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=600', order: 1 },
-  { name: 'Rohan Gupta', role: 'General Secretary', photoUrl: 'https://images.unsplash.com/photo-1500648767791-00dcc994a43e?w=600', order: 2 },
-  { name: 'Ananya Singh', role: 'Treasurer', photoUrl: 'https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=600', order: 3 },
-  { name: 'Vikram Patel', role: 'Events Coordinator', photoUrl: 'https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=600', order: 4 },
-  { name: 'Sneha Reddy', role: 'PR & Media Head', photoUrl: 'https://images.unsplash.com/photo-1517841905240-472988babdf9?w=600', order: 5 },
-  { name: 'Aditya Kumar', role: 'Technical Coordinator', photoUrl: 'https://images.unsplash.com/photo-1519085360753-af0119f7cbe7?w=600', order: 6 },
-  { name: 'Ishita Verma', role: 'Creative Head', photoUrl: 'https://images.unsplash.com/photo-1531746020798-e6953c6e8e04?w=600', order: 7 },
+  { name: 'Dr. S.K. Singh', role: 'Faculty Advisor', photoUrl: 'https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=600', order: 0, tier: 'advisor' },
+  { name: 'Arjun Mehta', role: 'President', photoUrl: 'https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?w=600', order: 1, tier: 'leadership' },
+  { name: 'Priya Sharma', role: 'Vice President', photoUrl: 'https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=600', order: 2, tier: 'leadership' },
+  { name: 'Rohan Gupta', role: 'General Secretary', photoUrl: 'https://images.unsplash.com/photo-1500648767791-00dcc994a43e?w=600', order: 3, tier: 'core' },
+  { name: 'Ananya Singh', role: 'Treasurer', photoUrl: 'https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=600', order: 4, tier: 'core' },
+  { name: 'Sneha Reddy', role: 'PR & Media Head', photoUrl: 'https://images.unsplash.com/photo-1517841905240-472988babdf9?w=600', order: 5, tier: 'core' },
+  { name: 'Aditya Kumar', role: 'Nritya Head', photoUrl: 'https://images.unsplash.com/photo-1519085360753-af0119f7cbe7?w=600', order: 6, tier: 'society-head' },
+  { name: 'Ishita Verma', role: 'Kalakriti Head', photoUrl: 'https://images.unsplash.com/photo-1531746020798-e6953c6e8e04?w=600', order: 7, tier: 'society-head' },
 ];
 
 async function seed() {
