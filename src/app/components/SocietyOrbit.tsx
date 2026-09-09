@@ -152,14 +152,14 @@ export default function SocietyOrbit({ societies }: SocietyOrbitProps) {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col lg:flex-row items-center lg:items-center min-h-[600px] relative w-full">
 
           {/* MANDALA + ORBIT */}
-          <div className="relative w-[320px] h-[320px] lg:w-[580px] lg:h-[580px] flex items-center justify-center shrink-0 mb-6 lg:mb-0 z-0">
+          <div className="relative w-[260px] h-[260px] sm:w-[320px] sm:h-[320px] lg:w-[580px] lg:h-[580px] flex items-center justify-center shrink-0 mt-8 mb-4 lg:mb-0 z-0">
 
             {/* Ambient glow */}
-            <div className="absolute w-40 h-40 lg:w-72 lg:h-72 rounded-full blur-[80px] opacity-30 dark:opacity-50 bg-gradient-to-tr from-[#FF4D6D] to-[#7B2FF7] transition-opacity duration-300" />
+            <div className="absolute w-32 h-32 lg:w-72 lg:h-72 rounded-full blur-[60px] lg:blur-[80px] opacity-30 dark:opacity-50 bg-gradient-to-tr from-[#FF4D6D] to-[#7B2FF7] transition-opacity duration-300" />
 
             {/* Rotating wrapper */}
             <motion.div
-              className="absolute w-[320px] h-[320px] lg:w-[580px] lg:h-[580px] origin-center"
+              className="absolute w-[260px] h-[260px] sm:w-[320px] sm:h-[320px] lg:w-[580px] lg:h-[580px] origin-center"
               style={{ rotate: prefersReducedMotion ? 0 : wheelRotation }}
             >
               {/* Mandala at center */}
@@ -175,8 +175,8 @@ export default function SocietyOrbit({ societies }: SocietyOrbitProps) {
               {/* Orb nodes */}
               {data.map((soc, i) => {
                 const angle = (i / data.length) * 2 * Math.PI - Math.PI / 2;
-                const pctX = (CENTER + RADIUS * Math.cos(angle)) / ORBIT_SIZE * 100;
-                const pctY = (CENTER + RADIUS * Math.sin(angle)) / ORBIT_SIZE * 100;
+                const pctX = ((CENTER + RADIUS * Math.cos(angle)) / ORBIT_SIZE * 100).toFixed(4);
+                const pctY = ((CENTER + RADIUS * Math.sin(angle)) / ORBIT_SIZE * 100).toFixed(4);
                 const isActive = i === activeIndex;
 
                 return (
@@ -209,7 +209,7 @@ export default function SocietyOrbit({ societies }: SocietyOrbitProps) {
           </div>
 
           {/* ACTIVE CONTENT */}
-          <div className="flex-1 lg:pl-16 flex flex-col justify-center text-center lg:text-left z-10 w-full">
+          <div className="flex-1 lg:pl-16 flex flex-col justify-center text-center lg:text-left z-10 w-full mb-8 lg:mb-0">
             <AnimatePresence mode="wait">
               <motion.div
                 key={activeIndex}
@@ -220,15 +220,15 @@ export default function SocietyOrbit({ societies }: SocietyOrbitProps) {
                 className="flex flex-col items-center lg:items-start"
               >
                 <span
-                  className="inline-block px-4 py-1.5 mb-5 text-xs font-bold uppercase tracking-[0.2em] text-white rounded-full shadow-md"
+                  className="inline-block px-3 py-1 mb-3 lg:px-4 lg:py-1.5 lg:mb-5 text-[10px] lg:text-xs font-bold uppercase tracking-[0.2em] text-white rounded-full shadow-md"
                   style={{ backgroundColor: activeSociety.accentColor }}
                 >
                   {activeSociety.tag}
                 </span>
-                <h2 className="font-serif text-5xl md:text-7xl lg:text-8xl font-bold text-[#0F0B1E] dark:text-[#FFF8EC] mb-5 transition-colors duration-300">
+                <h2 className="font-serif text-3xl sm:text-5xl md:text-7xl lg:text-8xl font-bold text-[#0F0B1E] dark:text-[#FFF8EC] mb-3 lg:mb-5 transition-colors duration-300">
                   {activeSociety.name}
                 </h2>
-                <p className="text-[#0F0B1E]/60 dark:text-[#FFF8EC]/60 text-lg md:text-xl max-w-xl font-light leading-relaxed transition-colors duration-300">
+                <p className="text-[#0F0B1E]/60 dark:text-[#FFF8EC]/60 text-sm sm:text-lg md:text-xl max-w-xl font-light leading-relaxed transition-colors duration-300 px-4 sm:px-0">
                   {activeSociety.description}
                 </p>
               </motion.div>
