@@ -116,12 +116,12 @@ export default function Hero() {
       </div>
 
       {/* Content */}
-      <div className="relative z-20 text-center px-4 max-w-5xl mx-auto flex flex-col items-center pointer-events-none">
+      <div className="relative z-20 w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col items-start justify-center h-full pointer-events-none mt-32 md:mt-0">
         <motion.span 
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           transition={{ duration: 1, delay: 0.2 }}
-          className="tracking-[0.3em] text-sm text-paper/80 uppercase font-sans mb-4"
+          className="tracking-[0.3em] text-sm text-paper/80 uppercase font-sans mb-4 ml-1"
         >
           IIIT ALLAHABAD
         </motion.span>
@@ -130,7 +130,7 @@ export default function Hero() {
           variants={prefersReducedMotion ? {} : containerVariants}
           initial="hidden"
           animate="visible"
-          className="font-serif text-5xl sm:text-6xl md:text-8xl font-bold text-paper mb-6 flex flex-wrap justify-center gap-x-4"
+          className="font-serif text-5xl sm:text-6xl md:text-8xl font-bold text-paper mb-6 flex flex-wrap justify-start gap-x-4 max-w-4xl"
         >
           {titleWords.map((word, i) => (
             <motion.span key={i} variants={prefersReducedMotion ? {} : wordVariants} className="inline-block pointer-events-auto">
@@ -140,15 +140,15 @@ export default function Hero() {
         </motion.h1>
         
         <motion.p 
-          initial={{ opacity: 0, y: 10 }}
+          initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8, delay: 0.8 }}
-          className="text-xl md:text-2xl text-paper/70 mb-10 max-w-2xl font-light"
+          transition={{ duration: 0.8, delay: 0.6 }}
+          className="text-lg md:text-2xl text-paper/90 font-serif max-w-2xl mb-12 pointer-events-auto text-left"
         >
           Where Creativity Meets Tradition
         </motion.p>
         
-        <div className="flex flex-col sm:flex-row gap-4 items-center justify-center pointer-events-auto">
+        <div className="flex flex-col sm:flex-row gap-4 items-center justify-start pointer-events-auto">
           <Link
             href="/societies"
             className="px-8 py-3 rounded-full bg-white/10 backdrop-blur-md border border-white/20 text-paper hover:bg-white/20 hover:border-white/40 transition-all duration-300 text-lg font-medium"

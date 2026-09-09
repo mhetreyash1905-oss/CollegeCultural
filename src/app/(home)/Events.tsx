@@ -19,8 +19,8 @@ export default async function Events() {
   return (
     <section id="events" className="section-padding max-w-5xl mx-auto overflow-hidden">
       <ScrollAnimationWrapper direction="up">
-        <div className="text-center mb-16">
-          <h2 className="font-serif text-4xl md:text-5xl text-[#0F0B1E] dark:text-[#FFF8EC]">Upcoming Events</h2>
+        <div className="text-left mb-16 pl-4 md:pl-0">
+          <h2 className="font-serif text-4xl md:text-5xl text-[#0F0B1E]">Upcoming Events</h2>
         </div>
       </ScrollAnimationWrapper>
 

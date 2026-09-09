@@ -152,24 +152,24 @@ export default function SocietyOrbit({ societies }: SocietyOrbitProps) {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col lg:flex-row items-center lg:items-center min-h-[600px] relative w-full">
 
           {/* MANDALA + ORBIT */}
-          <div className="relative w-[260px] h-[260px] sm:w-[320px] sm:h-[320px] lg:w-[580px] lg:h-[580px] flex items-center justify-center shrink-0 mt-8 mb-4 lg:mb-0 z-0">
+          <div className="relative w-[300px] h-[300px] sm:w-[400px] sm:h-[400px] lg:w-[700px] lg:h-[700px] flex items-center justify-center shrink-0 mt-8 mb-4 lg:mb-0 z-0">
 
             {/* Ambient glow */}
-            <div className="absolute w-32 h-32 lg:w-72 lg:h-72 rounded-full blur-[60px] lg:blur-[80px] opacity-30 dark:opacity-50 bg-gradient-to-tr from-[#FF4D6D] to-[#7B2FF7] transition-opacity duration-300" />
+            <div className="absolute w-40 h-40 lg:w-80 lg:h-80 rounded-full blur-[60px] lg:blur-[80px] opacity-30 bg-gradient-to-tr from-[#FF4D6D] to-[#7B2FF7] transition-opacity duration-300" />
 
             {/* Rotating wrapper */}
             <motion.div
-              className="absolute w-[260px] h-[260px] sm:w-[320px] sm:h-[320px] lg:w-[580px] lg:h-[580px] origin-center"
+              className="absolute w-[300px] h-[300px] sm:w-[400px] sm:h-[400px] lg:w-[700px] lg:h-[700px] origin-center"
               style={{ rotate: prefersReducedMotion ? 0 : wheelRotation }}
             >
               {/* Mandala at center */}
-              <div className="absolute inset-[15%] text-[#0F0B1E] dark:text-[#FFF8EC]">
+              <div className="absolute inset-[15%] text-[#0F0B1E]">
                 <MandalaSVG />
               </div>
 
               {/* Orbit ring */}
               <svg className="absolute inset-0 w-full h-full" viewBox={`0 0 ${ORBIT_SIZE} ${ORBIT_SIZE}`}>
-                <circle cx={CENTER} cy={CENTER} r={RADIUS} fill="none" stroke="currentColor" strokeWidth="1.5" strokeDasharray="6 10" className="text-black/15 dark:text-white/15" />
+                <circle cx={CENTER} cy={CENTER} r={RADIUS} fill="none" stroke="currentColor" strokeWidth="1.5" strokeDasharray="6 10" className="text-black/15" />
               </svg>
 
               {/* Orb nodes */}
@@ -194,7 +194,7 @@ export default function SocietyOrbit({ societies }: SocietyOrbitProps) {
                       focus-visible:outline-none focus-visible:ring-4 focus-visible:ring-[#FF4D6D] focus-visible:ring-offset-2
                       ${isActive
                         ? 'scale-110 shadow-[0_0_25px_var(--tw-shadow-color)]'
-                        : 'bg-white dark:bg-white/90 shadow-lg hover:scale-105 border-2 border-black/10 dark:border-white/20'
+                        : 'bg-white shadow-lg hover:scale-105 border-2 border-black/10'
                       }`}
                     // @ts-ignore
                     style-tw-shadow-color={isActive ? soc.accentColor : undefined}
@@ -209,7 +209,7 @@ export default function SocietyOrbit({ societies }: SocietyOrbitProps) {
           </div>
 
           {/* ACTIVE CONTENT */}
-          <div className="flex-1 lg:pl-16 flex flex-col justify-center text-center lg:text-left z-10 w-full mb-8 lg:mb-0">
+          <div className="flex-1 lg:pl-16 flex flex-col justify-center text-left z-10 w-full mb-8 lg:mb-0">
             <AnimatePresence mode="wait">
               <motion.div
                 key={activeIndex}
@@ -217,7 +217,7 @@ export default function SocietyOrbit({ societies }: SocietyOrbitProps) {
                 animate={prefersReducedMotion ? { opacity: 1 } : { opacity: 1, x: 0 }}
                 exit={prefersReducedMotion ? { opacity: 0 } : { opacity: 0, x: -30 }}
                 transition={{ duration: 0.25 }}
-                className="flex flex-col items-center lg:items-start"
+                className="flex flex-col items-start"
               >
                 <span
                   className="inline-block px-3 py-1 mb-3 lg:px-4 lg:py-1.5 lg:mb-5 text-[10px] lg:text-xs font-bold uppercase tracking-[0.2em] text-white rounded-full shadow-md"
@@ -225,10 +225,10 @@ export default function SocietyOrbit({ societies }: SocietyOrbitProps) {
                 >
                   {activeSociety.tag}
                 </span>
-                <h2 className="font-serif text-3xl sm:text-5xl md:text-7xl lg:text-8xl font-bold text-[#0F0B1E] dark:text-[#FFF8EC] mb-3 lg:mb-5 transition-colors duration-300">
+                <h2 className="font-serif text-3xl sm:text-5xl md:text-7xl lg:text-8xl font-bold text-[#0F0B1E] mb-3 lg:mb-5 transition-colors duration-300">
                   {activeSociety.name}
                 </h2>
-                <p className="text-[#0F0B1E]/60 dark:text-[#FFF8EC]/60 text-sm sm:text-lg md:text-xl max-w-xl font-light leading-relaxed transition-colors duration-300 px-4 sm:px-0">
+                <p className="text-[#0F0B1E]/60 text-sm sm:text-lg md:text-xl max-w-xl font-light leading-relaxed transition-colors duration-300 px-4 sm:px-0">
                   {activeSociety.description}
                 </p>
               </motion.div>
