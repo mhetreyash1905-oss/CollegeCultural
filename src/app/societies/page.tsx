@@ -27,25 +27,24 @@ const societies: SocietyDetail[] = [
   {
     id: 'ams',
     name: 'AMS',
-    fullName: 'Acoustic and Music Society',
-    tag: 'Music',
+    fullName: 'Acoustics and Media Society',
+    tag: 'Acoustics & Media',
     accentColor: '#FFC93C',
     accentBorder: 'border-[#FFC93C]',
     badgeBg: 'bg-[#FFC93C]/15 text-[#FFC93C] border-[#FFC93C]/30',
     image: 'https://images.unsplash.com/photo-1511671782779-c97d3d27a1d4?w=800&q=80',
-    imageAlt: 'Acoustic guitar and recording instruments setup for live music performance',
-    quote: 'Where melodies breathe life into campus rhythms.',
+    imageAlt: 'Acoustics and Media',
+    quote: 'Capturing moments and managing the technical pulse of the campus.',
     paragraphs: [
-      'The Acoustic and Music Society (AMS) serves as the melodic heartbeat of IIIT Allahabad. Comprising gifted vocalists, multi-instrumentalists, composers, and sound engineers, AMS traverses genres ranging from Indian classical and semi-classical ragas to progressive rock, blues, jazz, and contemporary acoustic pop.',
-      'Throughout the academic year, the society conducts extensive instrumental bootcamps covering guitar, keyboard, violin, and percussion, alongside specialized masterclasses in digital audio workstations (DAWs), sound engineering, and multi-track recording. Regular open-mic unplugged jam sessions at the campus amphitheatre cultivate raw talent into polished stage artists.',
-      'AMS anchors major musical spectacles including the flagship Sangeet Sandhya, acoustic coffeehouse sessions, and the high-octane national Battle of the Bands during the annual cultural fest. Society members consistently represent IIITA at premier inter-collegiate festivals including IIT Kanpur Antaragni and IIT Bombay Mood Indigo, frequently bringing home podium honors in band and acoustic categories.',
+      'The Acoustics and Media Society (AMS) serves as the technical and media backbone of IIIT Allahabad. We handle professional photography, cinematic videography, and full auditorium console management for all major campus events.',
+      'Our team is responsible for ensuring perfect sound design, lighting control, and multimedia coverage, capturing the essence of every cultural, technical, and academic festival.',
     ],
-    keyHighlights: ['Sangeet Sandhya', 'Acoustic Jam Rooms', 'Music Production Masterclasses', 'Battle of the Bands Winners'],
+    keyHighlights: ['Photography', 'Videography', 'Auditorium Console', 'Sound Design'],
   },
   {
     id: 'nirmiti',
     name: 'Nirmiti',
-    fullName: 'Fine Arts and Creative Design Society',
+    fullName: 'Fine Arts Society',
     tag: 'Fine Arts',
     accentColor: '#00B4A6',
     accentBorder: 'border-[#00B4A6]',
@@ -56,7 +55,6 @@ const societies: SocietyDetail[] = [
     paragraphs: [
       'Nirmiti is the premier fine arts and visual craftsmanship society at IIIT Allahabad. Uniting sketch artists, painters, calligraphers, digital illustrators, and sculptors, Nirmiti breathes visual color, elegance, and thought-provoking imagery into every corridor of the campus.',
       'The society organizes comprehensive studio workshops spanning charcoal sketching, acrylic on canvas, watercolor blending, clay modeling, origami, and sustainable art from reclaimed materials. Nirmiti is also the creative powerhouse responsible for designing towering sculptural installations, majestic stage backdrops, and sprawling festival decor that transform the campus into a wonderland.',
-      'Their signature annual showcase, "Canvas", draws hundreds of art connoisseurs and students to celebrate original student creations. Nirmiti members have achieved numerous accolades in live speed-painting, live rangoli, and digital concept art competitions across collegiate circuits in northern India.',
     ],
     keyHighlights: ['Canvas Annual Art Exhibition', 'Live Spray & Speed Sketching', 'Campus Installation Sculptures', 'Handmade Festival Sets'],
   },
@@ -79,40 +77,38 @@ const societies: SocietyDetail[] = [
     keyHighlights: ['Groove Dance Battle', 'Hip-Hop & Contemporary Cyphers', 'Annual Freshers Dance Bootcamp', 'National Choreography Trophies'],
   },
   {
-    id: 'virtousi',
-    name: 'Virtousi',
-    fullName: 'Stage Dramatics Society',
-    tag: 'Dramatics',
-    accentColor: '#7B2FF7',
-    accentBorder: 'border-[#7B2FF7]',
-    badgeBg: 'bg-[#7B2FF7]/15 text-[#7B2FF7] border-[#7B2FF7]/30',
+    id: 'rangtarangini',
+    name: 'Rangtarangini',
+    fullName: 'Drama Society',
+    tag: 'Drama',
+    accentColor: '#F97316',
+    accentBorder: 'border-[#F97316]',
+    badgeBg: 'bg-[#F97316]/15 text-[#F97316] border-[#F97316]/30',
     image: 'https://images.unsplash.com/photo-1507676184212-d03ab07a01bf?w=800&q=80',
     imageAlt: 'Theatrical actors performing under spotlight on an auditorium stage',
     quote: 'Breathing life into characters, scripts, and silent truths.',
     paragraphs: [
-      'Virtousi is the stage dramatics society of IIIT Allahabad, dedicated to the sublime craft of proscenium theatre, method acting, and compelling cinematic narratives. The society champions powerful storytelling that challenges perspectives, explores human complexity, and sparks meaningful discourse.',
-      'The society conducts intensive dramatic bootcamps on vocal projection, emotional recall, blocking, improvisation, and lighting design. Scriptwriting circles within Virtousi adapt world classics alongside penning original Hindi and English plays, teaching members how to craft nuanced characters and gripping narrative arcs.',
-      'Their marquee event, "Natya Utsav", and flagship one-act proscenium productions pack the Main Auditorium to maximum capacity. Virtousi productions have represented IIITA at premier inter-college dramatics tournaments, consistently lauded for impeccable dialogue delivery, immersive soundscapes, and spellbinding theatrical direction.',
+      'Rangtarangini is the dramatics society of IIIT Allahabad, capturing emotions through stage plays, street plays (nukkad natak), and acting.',
+      'We bring socially conscious art directly to public courtyards and campus squares, while also delving into the sublime craft of proscenium theatre, method acting, and compelling cinematic narratives.',
     ],
-    keyHighlights: ['Natya Utsav Annual Play', 'Stagecraft & Lighting Masterclasses', 'Mono-Act Showcases', 'Best Direction & Actor Awards'],
+    keyHighlights: ['Natya Utsav Annual Play', 'Nukkad Natak', 'Mono-Act Showcases'],
   },
   {
-    id: 'rangtarangini',
-    name: 'Rangtarangini',
-    fullName: 'Street Theatre & Nukkad Natak Society',
-    tag: 'Theatre',
-    accentColor: '#F97316',
-    accentBorder: 'border-[#F97316]',
-    badgeBg: 'bg-[#F97316]/15 text-[#F97316] border-[#F97316]/30',
-    image: 'https://images.unsplash.com/photo-1514306191717-452ec28c7814?w=800&q=80',
-    imageAlt: 'Street theatre group in circle performing energetic Nukkad Natak',
-    quote: 'Rousing voices and acoustic beats that stir the public conscience.',
+    id: 'virtousi',
+    name: 'Virtousi',
+    fullName: 'Music Society',
+    tag: 'Music',
+    accentColor: '#7B2FF7',
+    accentBorder: 'border-[#7B2FF7]',
+    badgeBg: 'bg-[#7B2FF7]/15 text-[#7B2FF7] border-[#7B2FF7]/30',
+    image: 'https://images.unsplash.com/photo-1514320291840-2e0a9bf2a9ae?w=800&q=80',
+    imageAlt: 'Live music band performance',
+    quote: 'Where melodies breathe life into campus rhythms.',
     paragraphs: [
-      'Rangtarangini is the vibrant street theatre and Nukkad Natak society of IIIT Allahabad. Breaking free from the traditional stage, Rangtarangini brings socially conscious art directly to public courtyards, bustling street corners, and campus squares using only thunderous voices, expressive bodies, and live percussion.',
-      'Rehearsals are defined by intense stamina drills, chorus harmony, rhythmic dholak patterns, and collective script brainstorming. The troupe examines pressing societal dilemmas—from mental health and gender equality to environmental conservation and civic responsibility—translating them into sharp satire, memorable slogans, and heartfelt dialogue.',
-      'Rangtarangini is celebrated across Uttar Pradesh, performing not only at academic fests but also in local community centers and public squares across Prayagraj. Their signature street plays have garnered top honors at national collegiate theatre circuits for hard-hitting punchlines, immaculate formations, and evocative social commentary.',
+      'Virtousi is the official music society of IIIT Allahabad that harmonizes the campus with instrumental, classical, and modern music performances.',
+      'Comprising gifted vocalists, multi-instrumentalists, and composers, Virtousi traverses genres ranging from Indian classical and semi-classical ragas to progressive rock, blues, jazz, and contemporary acoustic pop.',
     ],
-    keyHighlights: ['Prayagraj Public Street Campaigns', 'Nukkad Natak Competitions', 'Dholak & Rhythm Workshops', 'Social Awareness Impact Awards'],
+    keyHighlights: ['Sangeet Sandhya', 'Acoustic Jam Rooms', 'Battle of the Bands Winners'],
   },
   {
     id: 'saraswa',
@@ -249,9 +245,9 @@ export default function SocietiesPage() {
                         Signature Highlights & Activities
                       </p>
                       <div className="flex flex-wrap gap-2">
-                        {soc.keyHighlights.map((highlight) => (
+                        {soc.keyHighlights.map((highlight, hIdx) => (
                           <span
-                            key={highlight}
+                            key={hIdx}
                             className="inline-flex items-center gap-1.5 px-3 py-1 rounded-lg text-xs font-medium bg-black/5 dark:bg-white/5 border border-black/10 dark:border-white/10 text-[#0F0B1E] dark:text-[#FFF8EC]"
                           >
                             <span
@@ -264,14 +260,14 @@ export default function SocietiesPage() {
                       </div>
                     </div>
 
-                    {/* Action Bar */}
-                    <div className="pt-2 flex items-center gap-4">
+                    {/* Explore Button */}
+                    <div className="pt-6">
                       <Link
-                        href="/events"
-                        className="inline-flex items-center gap-2 text-xs sm:text-sm font-semibold transition-colors hover:underline"
-                        style={{ color: soc.accentColor }}
+                        href={`/societies/${soc.id}`}
+                        className="inline-flex items-center gap-2 px-6 py-3 rounded-full text-sm font-bold text-white transition-transform hover:scale-105 shadow-md"
+                        style={{ backgroundColor: soc.accentColor }}
                       >
-                        <span>Explore {soc.name} Events</span>
+                        <span>Explore {soc.name}</span>
                         <svg
                           className="w-4 h-4 transform transition-transform group-hover:translate-x-1"
                           fill="none"
