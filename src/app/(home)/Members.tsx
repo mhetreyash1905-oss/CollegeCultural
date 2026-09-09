@@ -31,7 +31,7 @@ export default async function Members() {
     <section id="team" className="section-padding max-w-6xl mx-auto overflow-hidden">
       <ScrollAnimationWrapper direction="up">
         <div className="text-center mb-16">
-          <h2 className="font-serif text-4xl md:text-5xl text-[#0F0B1E] dark:text-[#FFF8EC] font-bold uppercase tracking-widest">Cast & Crew</h2>
+          <h2 className="font-serif text-4xl md:text-5xl text-[#0F0B1E] font-bold uppercase tracking-widest">Cultural Council</h2>
           <p className="text-[#0F0B1E]/50 dark:text-[#FFF8EC]/50 mt-2 font-mono text-sm tracking-widest">IIITA CULTURAL COUNCIL 2026</p>
         </div>
       </ScrollAnimationWrapper>

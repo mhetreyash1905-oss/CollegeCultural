@@ -1,4 +1,5 @@
 import Hero from './(home)/Hero';
+import About from './(home)/About';
 import FestSection from './(home)/FestSection';
 import Societies from './(home)/Societies';
 import Events from './(home)/Events';
@@ -13,6 +14,7 @@ export default function HomePage() {
   return (
     <div className="flex flex-col gap-24 md:gap-32 pb-24">
       <Hero />
+      <About />
       <FestSection />
       <Societies />
       <Events />
