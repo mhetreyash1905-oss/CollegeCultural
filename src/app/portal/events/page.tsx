@@ -14,7 +14,8 @@ export default function EventManager() {
     title: "",
     description: "",
     date: new Date().toISOString().split("T")[0],
-    order: ""
+    registrationLink: "",
+    order: 0
   });
   
   const [formData, setFormData] = useState<any>(getEmptyState());
@@ -101,9 +102,8 @@ export default function EventManager() {
       {showForm && (
         <form onSubmit={handleSubmit} className="bg-white dark:bg-white/5 border border-black/10 dark:border-white/10 rounded-2xl p-6 shadow-sm mb-6 grid grid-cols-1 md:grid-cols-2 gap-4">
           
-          <div className="${['description', 'content', 'excerpt'].includes('title') ? 'md:col-span-2' : ''}">
+          <div>
             <label className="block text-sm font-medium mb-1 opacity-80 capitalize">title</label>
-            
             <input
               type="text"
               required
@@ -111,23 +111,10 @@ export default function EventManager() {
               onChange={e => setFormData({...formData, title: e.target.value})}
               className="w-full bg-black/5 dark:bg-black/20 border border-black/10 dark:border-white/10 rounded-lg px-4 py-2 focus:outline-none"
             />
-            
           </div>
-          <div className="${['description', 'content', 'excerpt'].includes('description') ? 'md:col-span-2' : ''}">
-            <label className="block text-sm font-medium mb-1 opacity-80 capitalize">description</label>
-            
-            <textarea
-              required
-              rows={4}
-              value={formData.description}
-              onChange={e => setFormData({...formData, description: e.target.value})}
-              className="w-full bg-black/5 dark:bg-black/20 border border-black/10 dark:border-white/10 rounded-lg px-4 py-2 focus:outline-none"
-            />
-            
-          </div>
-          <div className="${['description', 'content', 'excerpt'].includes('date') ? 'md:col-span-2' : ''}">
+
+          <div>
             <label className="block text-sm font-medium mb-1 opacity-80 capitalize">date</label>
-            
             <input
               type="date"
               required
@@ -135,11 +122,10 @@ export default function EventManager() {
               onChange={e => setFormData({...formData, date: e.target.value})}
               className="w-full bg-black/5 dark:bg-black/20 border border-black/10 dark:border-white/10 rounded-lg px-4 py-2 focus:outline-none"
             />
-            
           </div>
-          <div className="${['description', 'content', 'excerpt'].includes('order') ? 'md:col-span-2' : ''}">
+          
+          <div>
             <label className="block text-sm font-medium mb-1 opacity-80 capitalize">order</label>
-            
             <input
               type="number"
               required
@@ -147,7 +133,28 @@ export default function EventManager() {
               onChange={e => setFormData({...formData, order: e.target.value})}
               className="w-full bg-black/5 dark:bg-black/20 border border-black/10 dark:border-white/10 rounded-lg px-4 py-2 focus:outline-none"
             />
-            
+          </div>
+
+          <div>
+            <label className="block text-sm font-medium mb-1 opacity-80 capitalize">registration link (optional)</label>
+            <input
+              type="url"
+              value={formData.registrationLink || ''}
+              onChange={e => setFormData({...formData, registrationLink: e.target.value})}
+              placeholder="https://..."
+              className="w-full bg-black/5 dark:bg-black/20 border border-black/10 dark:border-white/10 rounded-lg px-4 py-2 focus:outline-none"
+            />
+          </div>
+
+          <div className="md:col-span-2">
+            <label className="block text-sm font-medium mb-1 opacity-80 capitalize">description</label>
+            <textarea
+              required
+              rows={4}
+              value={formData.description}
+              onChange={e => setFormData({...formData, description: e.target.value})}
+              className="w-full bg-black/5 dark:bg-black/20 border border-black/10 dark:border-white/10 rounded-lg px-4 py-2 focus:outline-none"
+            />
           </div>
           <div className="md:col-span-2 mt-4">
             <button type="submit" className="px-6 py-2 bg-[#FFC93C] text-black font-medium rounded-lg hover:bg-[#ffb700] transition-colors">

@@ -3,6 +3,8 @@ import dbConnect from '@/lib/mongodb';
 import { SiteConfig } from '@/models/SiteConfig';
 import { logAdminAction } from '@/lib/auditLogger';
 
+export const dynamic = 'force-dynamic';
+
 export async function GET() {
   try {
     await dbConnect();

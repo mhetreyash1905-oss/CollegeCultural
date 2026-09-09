@@ -12,8 +12,7 @@ export default function GalleryImageManager() {
   // Create an empty state based on fields
   const getEmptyState = () => ({
     imageUrl: "",
-    caption: "",
-    order: ""
+    order: 0
   });
   
   const [formData, setFormData] = useState<any>(getEmptyState());
@@ -100,33 +99,20 @@ export default function GalleryImageManager() {
       {showForm && (
         <form onSubmit={handleSubmit} className="bg-white dark:bg-white/5 border border-black/10 dark:border-white/10 rounded-2xl p-6 shadow-sm mb-6 grid grid-cols-1 md:grid-cols-2 gap-4">
           
-          <div className="${['description', 'content', 'excerpt'].includes('imageUrl') ? 'md:col-span-2' : ''}">
-            <label className="block text-sm font-medium mb-1 opacity-80 capitalize">imageUrl</label>
-            
+          <div>
+            <label className="block text-sm font-medium mb-1 opacity-80 capitalize">Image URL</label>
             <input
               type="text"
               required
               value={formData.imageUrl}
               onChange={e => setFormData({...formData, imageUrl: e.target.value})}
+              placeholder="https://..."
               className="w-full bg-black/5 dark:bg-black/20 border border-black/10 dark:border-white/10 rounded-lg px-4 py-2 focus:outline-none"
             />
-            
           </div>
-          <div className="${['description', 'content', 'excerpt'].includes('caption') ? 'md:col-span-2' : ''}">
-            <label className="block text-sm font-medium mb-1 opacity-80 capitalize">caption</label>
-            
-            <input
-              type="text"
-              required
-              value={formData.caption}
-              onChange={e => setFormData({...formData, caption: e.target.value})}
-              className="w-full bg-black/5 dark:bg-black/20 border border-black/10 dark:border-white/10 rounded-lg px-4 py-2 focus:outline-none"
-            />
-            
-          </div>
-          <div className="${['description', 'content', 'excerpt'].includes('order') ? 'md:col-span-2' : ''}">
-            <label className="block text-sm font-medium mb-1 opacity-80 capitalize">order</label>
-            
+
+          <div>
+            <label className="block text-sm font-medium mb-1 opacity-80 capitalize">Order</label>
             <input
               type="number"
               required
@@ -134,25 +120,22 @@ export default function GalleryImageManager() {
               onChange={e => setFormData({...formData, order: e.target.value})}
               className="w-full bg-black/5 dark:bg-black/20 border border-black/10 dark:border-white/10 rounded-lg px-4 py-2 focus:outline-none"
             />
-            
           </div>
+
           <div className="md:col-span-2 mt-4">
             <button type="submit" className="px-6 py-2 bg-[#FFC93C] text-black font-medium rounded-lg hover:bg-[#ffb700] transition-colors">
-              {editingId ? 'Update' : 'Create'}
+              {editingId ? 'Update' : 'Add Image'}
             </button>
           </div>
         </form>
       )}
 
-      <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-6">
+      <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-4 gap-6">
         {items.map((item) => (
-          <div key={item._id} className="bg-white dark:bg-white/5 border border-black/10 dark:border-white/10 rounded-2xl p-5 shadow-sm flex flex-col justify-between">
-            <div>
-              {item.imageUrl || item.photoUrl || item.coverImageUrl ? (
-                <img src={item.imageUrl || item.photoUrl || item.coverImageUrl} alt="Cover" className="w-full h-32 object-cover rounded-lg mb-4" />
-              ) : null}
-              <h3 className="font-bold text-lg mb-1">{item.title || item.name || item.caption || 'Item'}</h3>
-              <p className="text-sm opacity-60 mb-4 line-clamp-2">{item.description || item.excerpt || item.role}</p>
+          <div key={item._id} className="bg-white dark:bg-white/5 border border-black/10 dark:border-white/10 rounded-2xl p-4 shadow-sm flex flex-col justify-between">
+            <img src={item.imageUrl} alt="Gallery item" className="w-full h-40 object-cover rounded-lg mb-4" />
+            <div className="flex justify-between items-center text-sm opacity-60 mb-2">
+              <span>Order: {item.order}</span>
             </div>
             
             <div className="flex justify-end gap-2 pt-4 border-t border-black/10 dark:border-white/10">

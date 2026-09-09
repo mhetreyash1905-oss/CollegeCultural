@@ -43,6 +43,16 @@ export default async function Events() {
                     <p className="text-[#FFC93C] dark:text-[#FFC93C] font-semibold text-sm mb-1">{formatDate(event.date)}</p>
                     <h3 className="text-xl font-serif font-bold text-[#0F0B1E] dark:text-[#FFF8EC]">{event.title}</h3>
                     <p className="text-[#0F0B1E]/70 dark:text-[#FFF8EC]/70 text-sm mt-2">{event.description}</p>
+                    {event.registrationLink && (
+                      <a 
+                        href={event.registrationLink} 
+                        target="_blank" 
+                        rel="noopener noreferrer"
+                        className="inline-block mt-4 px-4 py-2 bg-[#FF4D6D] text-white text-xs font-bold uppercase tracking-wide rounded-lg hover:bg-[#ff3356] transition-colors"
+                      >
+                        Register Now
+                      </a>
+                    )}
                   </div>
                 </div>
 

@@ -2,8 +2,8 @@
 
 import { useState, useEffect } from 'react';
 import Link from 'next/link';
+import Image from 'next/image';
 import { usePathname } from 'next/navigation';
-import ThemeSwitch from './ThemeSwitch';
 
 export default function Navbar() {
   const [isScrolled, setIsScrolled] = useState(false);
@@ -17,10 +17,11 @@ export default function Navbar() {
   }, []);
 
   const navLinks = [
+    { name: 'Home', href: '/' },
     { name: 'Societies', href: '/societies' },
     { name: 'Events', href: '/events' },
-    { name: 'Blog', href: '/blog' },
     { name: 'Gallery', href: '/gallery' },
+    { name: 'Blog', href: '/blog' },
     { name: 'Team', href: '/team' },
     { name: 'Contact', href: '/contact' },
   ];
@@ -29,8 +30,25 @@ export default function Navbar() {
     <nav className="fixed top-0 w-full z-50 transition-all duration-300 bg-[#FFF8EC] dark:bg-[#0F0B1E] border-b border-black/10 dark:border-white/10 shadow-sm">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex items-center justify-between h-20">
-          <Link href="/" className="font-serif text-2xl font-bold text-[#0F0B1E] dark:text-[#FFF8EC] hover:text-[#FF4D6D] dark:hover:text-[#FF4D6D] transition-colors">
-            Cultural Council
+          <Link href="/" className="flex items-center gap-3 group transition-transform hover:scale-[1.02]">
+            <div className="bg-white p-1.5 rounded-md shadow-sm border border-black/5">
+              <Image 
+                src="/logo.png" 
+                alt="IIITA Logo" 
+                width={36} 
+                height={36} 
+                className="object-contain"
+                priority
+              />
+            </div>
+            <div className="flex flex-col justify-center mt-1">
+              <span className="font-serif text-[1.35rem] md:text-2xl font-black text-[#0F0B1E] dark:text-[#FFF8EC] leading-none tracking-tight">
+                IIIT Allahabad
+              </span>
+              <span className="text-[#B8860B] text-[0.65rem] md:text-xs font-bold tracking-[0.2em] uppercase leading-tight mt-1">
+                Cultural Council
+              </span>
+            </div>
           </Link>
 
           {/* Desktop nav */}
@@ -41,21 +59,19 @@ export default function Navbar() {
                 <Link
                   key={link.name}
                   href={link.href}
-                  className={`text-sm font-medium transition-colors ${isActive ? 'text-[#FF4D6D]' : 'text-[#0F0B1E]/70 dark:text-[#FFF8EC]/70 hover:text-[#FF4D6D]'}`}
+                  className={`text-sm font-medium transition-colors ${isActive ? 'text-[#FF4D6D]' : 'text-[#0F0B1E]/70 hover:text-[#FF4D6D]'}`}
                 >
                   {link.name}
                 </Link>
               );
             })}
-            <ThemeSwitch />
           </div>
 
           {/* Mobile */}
           <div className="md:hidden flex items-center gap-3">
-            <ThemeSwitch />
             <button
               onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
-              className="p-2 text-[#0F0B1E] dark:text-[#FFF8EC]"
+              className="p-2 text-[#0F0B1E]"
               aria-expanded={isMobileMenuOpen}
               aria-label="Toggle menu"
             >

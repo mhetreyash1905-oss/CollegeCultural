@@ -487,30 +487,78 @@ export default function TeamPage() {
           </div>
         </section>
 
-        {/* CALL TO ACTION */}
-        <section className="mt-20 mb-8 p-8 md:p-12 rounded-3xl bg-black/5 dark:bg-white/5 border border-black/10 dark:border-white/10 text-center relative overflow-hidden">
-          <div className="max-w-2xl mx-auto relative z-10">
-            <h3 className="font-serif text-2xl md:text-3xl font-bold mb-3">
-              Want to Join the Cultural Council?
-            </h3>
-            <p className="text-sm md:text-base text-black/70 dark:text-white/70 font-sans mb-6">
-              Auditions and core recruitment drives take place at the start of every academic semester.
-              Whether you are an artist, manager, or technician, there is a place for you.
-            </p>
-            <div className="flex flex-wrap justify-center gap-4">
-              <Link
-                href="/contact"
-                className="px-6 py-3 rounded-full bg-[#0F0B1E] dark:bg-[#FFF8EC] text-[#FFF8EC] dark:text-[#0F0B1E] font-medium text-sm hover:opacity-90 transition-opacity shadow-md"
-              >
-                Reach Out to Us
-              </Link>
-              <Link
-                href="/societies"
-                className="px-6 py-3 rounded-full bg-black/5 dark:bg-white/10 border border-black/10 dark:border-white/15 text-sm font-medium hover:bg-black/10 dark:hover:bg-white/20 transition-colors"
-              >
-                Explore All 6 Societies
-              </Link>
+        {/* SELECTION & ELIGIBILITY */}
+        <section className="mt-24 mb-12">
+          <div className="flex flex-col lg:flex-row gap-12 lg:gap-16 items-start">
+            
+            {/* Left Content */}
+            <div className="flex-1 space-y-6">
+              <div className="flex items-center gap-3">
+                <div className="w-8 h-[2px] bg-[#B8860B]" />
+                <span className="text-[#B8860B] text-xs font-bold tracking-[0.2em] uppercase">
+                  SELECTION & ELIGIBILITY
+                </span>
+              </div>
+              
+              <h2 className="font-serif text-4xl md:text-5xl font-bold text-[#0F0B1E]">
+                Who gets on the team
+              </h2>
+              
+              <div className="space-y-4 text-base text-black/70 font-sans leading-relaxed">
+                <p>
+                  Gymkhana Cultural Council members are selected on the basis of CGPA by a
+                  duly constituted committee, appointed by the Director on the
+                  recommendation of the Dean of Student Affairs.
+                </p>
+                <p>
+                  Minimum CGPA cutoff for eligibility: <strong className="text-[#0F0B1E]">6.0 / 10</strong>. 
+                  Students must additionally have no active disciplinary enquiry or case of Unfair 
+                  Means (UFM) against them.
+                </p>
+              </div>
+
+              <div className="pt-4">
+                <Link
+                  href="/contact"
+                  className="inline-flex items-center justify-center px-6 py-3 rounded-full border border-black/20 text-sm font-medium hover:bg-black/5 transition-colors"
+                >
+                  Have questions? Contact us &rarr;
+                </Link>
+              </div>
             </div>
+
+            {/* Right Card */}
+            <div className="w-full lg:w-[480px] bg-white border border-black/10 rounded-2xl p-8 shadow-sm">
+              <div className="inline-block px-3 py-1 bg-emerald-500/10 border border-emerald-500/20 rounded-full mb-6">
+                <span className="text-emerald-700 text-xs font-bold tracking-widest uppercase">
+                  Eligibility Checklist
+                </span>
+              </div>
+
+              <ul className="space-y-4 text-[15px] font-medium text-[#0F0B1E]">
+                <li className="flex gap-3">
+                  <span className="font-bold opacity-50">1.</span>
+                  <span>CGPA of 6.0/10 or above</span>
+                </li>
+                <li className="flex gap-3">
+                  <span className="font-bold opacity-50">2.</span>
+                  <span>No active disciplinary enquiry</span>
+                </li>
+                <li className="flex gap-3">
+                  <span className="font-bold opacity-50">3.</span>
+                  <span>No recorded case of Unfair Means (UFM)</span>
+                </li>
+                <li className="flex gap-3">
+                  <span className="font-bold opacity-50">4.</span>
+                  <span>Recommended by Dean, Student Affairs</span>
+                </li>
+                <li className="flex gap-3">
+                  <span className="font-bold opacity-50">5.</span>
+                  <span>Approved by the Director-appointed committee</span>
+                </li>
+              </ul>
+            </div>
+
           </div>
         </section>
 

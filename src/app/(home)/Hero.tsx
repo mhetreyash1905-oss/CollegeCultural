@@ -84,29 +84,29 @@ export default function Hero() {
       <div className="absolute inset-0 bg-gradient-to-b from-indigo-base/40 via-indigo-base/60 to-indigo-base z-0" />
 
       {/* Navigation Controls */}
-      <div className="absolute inset-0 z-30 flex items-center justify-between px-4 md:px-12 pointer-events-none">
+      <div className="absolute inset-0 z-50 flex items-center justify-between px-4 md:px-12 pointer-events-none">
         <button 
-          onClick={prevSlide}
-          className="w-8 h-8 md:w-10 md:h-10 flex items-center justify-center rounded-full bg-white/10 backdrop-blur-md border border-white/20 text-white opacity-0 group-hover:opacity-100 transition-all duration-300 hover:bg-white/20 pointer-events-auto focus-visible:opacity-100"
+          onClick={(e) => { e.preventDefault(); e.stopPropagation(); prevSlide(); }}
+          className="w-10 h-10 md:w-12 md:h-12 flex items-center justify-center rounded-full bg-black/20 backdrop-blur-md border border-white/30 text-white opacity-0 group-hover:opacity-100 transition-all duration-300 hover:bg-black/40 hover:scale-110 pointer-events-auto cursor-pointer"
           aria-label="Previous image"
         >
-          <svg className="w-4 h-4 md:w-5 md:h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 19l-7-7 7-7" /></svg>
+          <svg className="w-5 h-5 md:w-6 md:h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 19l-7-7 7-7" /></svg>
         </button>
         <button 
-          onClick={nextSlide}
-          className="w-8 h-8 md:w-10 md:h-10 flex items-center justify-center rounded-full bg-white/10 backdrop-blur-md border border-white/20 text-white opacity-0 group-hover:opacity-100 transition-all duration-300 hover:bg-white/20 pointer-events-auto focus-visible:opacity-100"
+          onClick={(e) => { e.preventDefault(); e.stopPropagation(); nextSlide(); }}
+          className="w-10 h-10 md:w-12 md:h-12 flex items-center justify-center rounded-full bg-black/20 backdrop-blur-md border border-white/30 text-white opacity-0 group-hover:opacity-100 transition-all duration-300 hover:bg-black/40 hover:scale-110 pointer-events-auto cursor-pointer"
           aria-label="Next image"
         >
-          <svg className="w-4 h-4 md:w-5 md:h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" /></svg>
+          <svg className="w-5 h-5 md:w-6 md:h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" /></svg>
         </button>
       </div>
 
       {/* Slideshow Indicators */}
-      <div className="absolute bottom-24 left-1/2 -translate-x-1/2 z-30 flex gap-3">
+      <div className="absolute bottom-24 left-1/2 -translate-x-1/2 z-50 flex gap-3 pointer-events-auto">
         {images.map((_, i) => (
           <button
             key={i}
-            onClick={() => setCurrentIndex(i)}
+            onClick={(e) => { e.preventDefault(); e.stopPropagation(); setCurrentIndex(i); }}
             className={`w-3 h-3 rounded-full transition-all duration-300 ${
               i === currentIndex ? 'bg-[#FF4D6D] scale-125' : 'bg-white/40 hover:bg-white/80'
             }`}

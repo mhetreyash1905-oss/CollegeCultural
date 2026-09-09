@@ -29,12 +29,6 @@ const GalleryLane = ({ images, reverse = false, reducedMotion = false }: { image
               src={image.imageUrl || '/placeholder.jpg'} 
               alt={image.caption || 'Gallery Image'}
             />
-            {/* Caption overlay */}
-            <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent opacity-0 group-hover/card:opacity-100 transition-opacity duration-300 flex flex-col justify-end p-4 pointer-events-none">
-              <p className="text-[#FFF8EC] text-sm md:text-base font-serif font-medium leading-tight drop-shadow-md">
-                {image.caption || 'Cultural Event'}
-              </p>
-            </div>
           </div>
         ))}
       </div>
