@@ -11,6 +11,7 @@ export interface ISiteConfig extends Document {
     facebook?: string;
     twitter?: string;
   };
+  showFestCountdown: boolean;
   createdAt: Date;
   updatedAt: Date;
 }
@@ -38,6 +39,10 @@ const SiteConfigSchema: Schema = new Schema(
       facebook: String,
       twitter: String,
     },
+    showFestCountdown: {
+      type: Boolean,
+      default: true,
+    }
   },
   {
     timestamps: true,

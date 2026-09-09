@@ -1,6 +1,6 @@
 'use client';
 
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import ScrollAnimationWrapper from '../components/ScrollAnimationWrapper';
 
 export default function Contact() {
@@ -11,6 +11,21 @@ export default function Contact() {
   });
   const [status, setStatus] = useState<'idle' | 'loading' | 'success' | 'error'>('idle');
   const [errorMessage, setErrorMessage] = useState('');
+  const [config, setConfig] = useState<any>({
+    contactEmail: 'cultural@iiita.ac.in',
+    contactAddress: 'IIIT Allahabad, Devghat, Jhalwa, Prayagraj, UP 211015',
+    contactPhone: '+91 XXX XXX XXXX',
+    socialLinks: {}
+  });
+
+  useEffect(() => {
+    fetch('/api/admin/config')
+      .then(res => res.json())
+      .then(data => {
+        if (data) setConfig({ ...config, ...data });
+      })
+      .catch(console.error);
+  }, []);
 
   const handleChange = (
     e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
@@ -159,7 +174,7 @@ export default function Contact() {
                     </div>
                     <div>
                       <p className="text-sm text-[#0F0B1E]/50 dark:text-[#FFF8EC]/50">Email</p>
-                      <p className="text-[#0F0B1E] dark:text-[#FFF8EC]">cultural@iiita.ac.in</p>
+                      <p className="text-[#0F0B1E] dark:text-[#FFF8EC]">{config.contactEmail}</p>
                     </div>
                   </div>
 
@@ -172,8 +187,7 @@ export default function Contact() {
                     </div>
                     <div>
                       <p className="text-sm text-[#0F0B1E]/50 dark:text-[#FFF8EC]/50">Location</p>
-                      <p className="text-[#0F0B1E] dark:text-[#FFF8EC]">IIIT Allahabad</p>
-                      <p className="text-[#0F0B1E]/60 dark:text-[#FFF8EC]/60 text-sm">Deoghat, Jhalwa, Prayagraj, UP 211015</p>
+                      <p className="text-[#0F0B1E]/60 dark:text-[#FFF8EC]/60 text-sm whitespace-pre-line">{config.contactAddress}</p>
                     </div>
                   </div>
 

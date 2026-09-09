@@ -3,7 +3,7 @@ import mongoose, { Schema, Document, Model } from 'mongoose';
 export interface IAuditLog extends Document {
   adminId: mongoose.Types.ObjectId;
   adminName: string;
-  action: 'CREATE' | 'UPDATE' | 'DELETE' | 'LOGIN' | 'REVOKE';
+  action: 'CREATE' | 'UPDATE' | 'DELETE' | 'LOGIN' | 'LOGOUT' | 'REVOKE';
   entityType: string;
   entityId?: string;
   details?: string;
@@ -23,7 +23,7 @@ const AuditLogSchema: Schema = new Schema(
     },
     action: {
       type: String,
-      enum: ['CREATE', 'UPDATE', 'DELETE', 'LOGIN', 'REVOKE'],
+      enum: ['CREATE', 'UPDATE', 'DELETE', 'LOGIN', 'LOGOUT', 'REVOKE'],
       required: true,
     },
     entityType: {

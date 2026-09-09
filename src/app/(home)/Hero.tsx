@@ -1,23 +1,26 @@
 'use client';
 
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { useReducedMotion, motion, AnimatePresence } from 'framer-motion';
 import Link from 'next/link';
-
-const images = [
-  'https://images.unsplash.com/photo-1523580494863-6f3031224c94?w=1600&q=80',
-  'https://images.unsplash.com/photo-1514525253161-7a46d19cd819?w=1600&q=80',
-  'https://images.unsplash.com/photo-1506157786151-b8491531f063?w=1600&q=80',
-  'https://images.unsplash.com/photo-1459749411175-04bf5292ceea?w=1600&q=80',
-  'https://images.unsplash.com/photo-1511512578047-dfb367046420?w=1600&q=80',
-  'https://images.unsplash.com/photo-1492684223066-81342ee5ff30?w=1600&q=80',
-  'https://images.unsplash.com/photo-1470229722913-7c090be5f524?w=1600&q=80',
-  'https://images.unsplash.com/photo-1516450360452-9312f5e86ce7?w=1600&q=80',
-];
 
 export default function Hero() {
   const prefersReducedMotion = useReducedMotion();
   const [currentIndex, setCurrentIndex] = useState(0);
+  const [images, setImages] = useState<string[]>([
+    'https://images.unsplash.com/photo-1523580494863-6f3031224c94?w=1600&q=80', // Fallback
+  ]);
+
+  useEffect(() => {
+    fetch('/api/admin/config')
+      .then(res => res.json())
+      .then(data => {
+        if (data?.heroImages?.length > 0) {
+          setImages(data.heroImages);
+        }
+      })
+      .catch(err => console.error("Failed to load hero images", err));
+  }, []);
 
   const nextSlide = () => {
     setCurrentIndex((prev) => (prev + 1) % images.length);

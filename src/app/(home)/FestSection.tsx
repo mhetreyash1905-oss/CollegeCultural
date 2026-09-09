@@ -3,7 +3,16 @@ import Countdown from '@/app/components/Countdown';
 import ScrollAnimationWrapper from '@/app/components/ScrollAnimationWrapper';
 import Link from 'next/link';
 
-export default function FestSection() {
+import dbConnect from '@/lib/mongodb';
+import { SiteConfig } from '@/models/SiteConfig';
+
+export default async function FestSection() {
+  await dbConnect();
+  const config = await SiteConfig.findOne();
+  if (config && config.showFestCountdown === false) {
+    return null;
+  }
+
   return (
     <section 
       id="fest" 

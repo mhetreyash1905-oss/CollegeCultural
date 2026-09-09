@@ -29,12 +29,15 @@ export async function middleware(req: NextRequest) {
 
     try {
       const verifiedToken = await verifyAuth(token);
-      // Optional: Add headers so API routes know who the user is without reverifying
-      const response = NextResponse.next();
-      response.headers.set('x-admin-id', verifiedToken.userId);
-      response.headers.set('x-admin-role', verifiedToken.role);
-      response.headers.set('x-admin-name', verifiedToken.name);
-      return response;
+      const requestHeaders = new Headers(req.headers);
+      requestHeaders.set('x-admin-id', verifiedToken.userId);
+      requestHeaders.set('x-admin-role', verifiedToken.role);
+      requestHeaders.set('x-admin-name', verifiedToken.name);
+      return NextResponse.next({
+        request: {
+          headers: requestHeaders,
+        },
+      });
     } catch (err) {
       // Token invalid or expired
       const response = NextResponse.redirect(new URL('/portal/login', req.url));
@@ -51,12 +54,15 @@ export async function middleware(req: NextRequest) {
     
     try {
       const verifiedToken = await verifyAuth(token);
-      const response = NextResponse.next();
-      // Inject headers for the API to use
-      response.headers.set('x-admin-id', verifiedToken.userId);
-      response.headers.set('x-admin-role', verifiedToken.role);
-      response.headers.set('x-admin-name', verifiedToken.name);
-      return response;
+      const requestHeaders = new Headers(req.headers);
+      requestHeaders.set('x-admin-id', verifiedToken.userId);
+      requestHeaders.set('x-admin-role', verifiedToken.role);
+      requestHeaders.set('x-admin-name', verifiedToken.name);
+      return NextResponse.next({
+        request: {
+          headers: requestHeaders,
+        },
+      });
     } catch (err) {
       return NextResponse.json({ error: 'Unauthorized or token expired' }, { status: 401 });
     }
