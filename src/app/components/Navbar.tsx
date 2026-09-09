@@ -26,7 +26,7 @@ export default function Navbar() {
   ];
 
   return (
-    <nav className={`fixed top-0 w-full z-50 transition-all duration-300 ${isScrolled ? 'bg-[#FFF8EC]/80 dark:bg-[#0F0B1E]/80 backdrop-blur-xl border-b border-black/10 dark:border-white/10 shadow-sm' : 'bg-transparent'}`}>
+    <nav className="fixed top-0 w-full z-50 transition-all duration-300 bg-[#FFF8EC] dark:bg-[#0F0B1E] border-b border-black/10 dark:border-white/10 shadow-sm">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex items-center justify-between h-20">
           <Link href="/" className="font-serif text-2xl font-bold text-[#0F0B1E] dark:text-[#FFF8EC] hover:text-[#FF4D6D] dark:hover:text-[#FF4D6D] transition-colors">
