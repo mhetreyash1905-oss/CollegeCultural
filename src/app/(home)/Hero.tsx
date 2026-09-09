@@ -1,55 +1,43 @@
 'use client';
 
-import { useState, useEffect } from 'react';
-import { useReducedMotion, motion, useScroll, useTransform } from 'framer-motion';
+import { useState } from 'react';
+import { useReducedMotion, motion, AnimatePresence } from 'framer-motion';
 import Link from 'next/link';
 
-const media = [
-  {
-    type: 'video',
-    src: 'https://joy1.videvo.net/videvo_files/video/free/2014-12/large_watermarked/Crowd_Pt_5_preview.mp4',
-    poster: 'https://images.unsplash.com/photo-1540575467063-178a50c2df87?auto=format&fit=crop&q=80'
-  },
-  {
-    type: 'image',
-    src: 'https://images.unsplash.com/photo-1501281668745-f7f57925c3b4?auto=format&fit=crop&q=80'
-  },
-  {
-    type: 'image',
-    src: 'https://images.unsplash.com/photo-1492684223066-81342ee5ff30?auto=format&fit=crop&q=80'
-  },
-  {
-    type: 'image',
-    src: 'https://images.unsplash.com/photo-1511512578047-dfb367046420?auto=format&fit=crop&q=80'
-  }
+const images = [
+  'https://images.unsplash.com/photo-1523580494863-6f3031224c94?w=1600&q=80',
+  'https://images.unsplash.com/photo-1514525253161-7a46d19cd819?w=1600&q=80',
+  'https://images.unsplash.com/photo-1506157786151-b8491531f063?w=1600&q=80',
+  'https://images.unsplash.com/photo-1459749411175-04bf5292ceea?w=1600&q=80',
+  'https://images.unsplash.com/photo-1511512578047-dfb367046420?w=1600&q=80',
+  'https://images.unsplash.com/photo-1492684223066-81342ee5ff30?w=1600&q=80',
+  'https://images.unsplash.com/photo-1470229722913-7c090be5f524?w=1600&q=80',
+  'https://images.unsplash.com/photo-1516450360452-9312f5e86ce7?w=1600&q=80',
 ];
 
 export default function Hero() {
-  const [currentIndex, setCurrentIndex] = useState(0);
   const prefersReducedMotion = useReducedMotion();
+  const [currentIndex, setCurrentIndex] = useState(0);
 
-  useEffect(() => {
-    if (prefersReducedMotion) return;
-    
-    const timer = setInterval(() => {
-      setCurrentIndex((prevIndex) => (prevIndex + 1) % media.length);
-    }, 6000);
+  const nextSlide = () => {
+    setCurrentIndex((prev) => (prev + 1) % images.length);
+  };
 
-    return () => clearInterval(timer);
-  }, [prefersReducedMotion]);
+  const prevSlide = () => {
+    setCurrentIndex((prev) => (prev - 1 + images.length) % images.length);
+  };
 
-  const { scrollY } = useScroll();
-  const y1 = useTransform(scrollY, [0, 1000], [0, 300]);
-
-  const titleText = "Cultural Council";
-  const titleWords = titleText.split(' ');
+  const titleWords = ["Cultural", "Council"];
 
   const containerVariants = {
     hidden: { opacity: 0 },
     visible: {
       opacity: 1,
-      transition: { staggerChildren: 0.2, delayChildren: 0.1 }
-    }
+      transition: {
+        staggerChildren: 0.15,
+        delayChildren: 0.3,
+      },
+    },
   };
 
   const wordVariants: any = {
@@ -64,40 +52,61 @@ export default function Hero() {
   };
 
   return (
-    <section id="hero" className="relative min-h-screen flex items-center justify-center overflow-hidden bg-indigo-base">
-      {/* Background Media */}
-      <motion.div style={{ y: prefersReducedMotion ? 0 : y1 }} className="absolute inset-0 z-0">
-        {media.map((item, index) => (
-          <div
-            key={index}
-            className={`absolute inset-0 transition-opacity duration-1000 ${index === currentIndex ? 'opacity-100' : 'opacity-0'}`}
-          >
-            {item.type === 'video' ? (
-              <video
-                src={item.src}
-                poster={item.poster}
-                autoPlay
-                loop
-                muted
-                playsInline
-                className="w-full h-[120%] -top-[10%] absolute object-cover"
-              />
-            ) : (
-              <img
-                src={item.src}
-                alt={`Hero background ${index + 1}`}
-                className="w-full h-[120%] -top-[10%] absolute object-cover"
-              />
-            )}
-          </div>
-        ))}
-      </motion.div>
+    <section id="hero" className="relative min-h-screen flex items-center justify-center overflow-hidden bg-indigo-base group">
+      
+      {/* Slideshow Background */}
+      <div className="absolute inset-0 z-0">
+        <AnimatePresence initial={false}>
+          <motion.img
+            key={currentIndex}
+            src={images[currentIndex]}
+            alt={`Hero slide ${currentIndex + 1}`}
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            transition={{ duration: prefersReducedMotion ? 0 : 0.8 }}
+            className="w-full h-[120%] -top-[10%] absolute object-cover"
+          />
+        </AnimatePresence>
+      </div>
 
       {/* Dark Overlay */}
       <div className="absolute inset-0 bg-gradient-to-b from-indigo-base/40 via-indigo-base/60 to-indigo-base z-0" />
 
+      {/* Navigation Controls */}
+      <div className="absolute inset-0 z-30 flex items-center justify-between px-4 md:px-12 pointer-events-none">
+        <button 
+          onClick={prevSlide}
+          className="w-12 h-12 md:w-16 md:h-16 flex items-center justify-center rounded-full bg-white/10 backdrop-blur-md border border-white/20 text-white opacity-0 group-hover:opacity-100 transition-all duration-300 hover:bg-white/20 pointer-events-auto focus-visible:opacity-100"
+          aria-label="Previous image"
+        >
+          <svg className="w-6 h-6 md:w-8 md:h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 19l-7-7 7-7" /></svg>
+        </button>
+        <button 
+          onClick={nextSlide}
+          className="w-12 h-12 md:w-16 md:h-16 flex items-center justify-center rounded-full bg-white/10 backdrop-blur-md border border-white/20 text-white opacity-0 group-hover:opacity-100 transition-all duration-300 hover:bg-white/20 pointer-events-auto focus-visible:opacity-100"
+          aria-label="Next image"
+        >
+          <svg className="w-6 h-6 md:w-8 md:h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" /></svg>
+        </button>
+      </div>
+
+      {/* Slideshow Indicators */}
+      <div className="absolute bottom-24 left-1/2 -translate-x-1/2 z-30 flex gap-3">
+        {images.map((_, i) => (
+          <button
+            key={i}
+            onClick={() => setCurrentIndex(i)}
+            className={`w-3 h-3 rounded-full transition-all duration-300 ${
+              i === currentIndex ? 'bg-[#FF4D6D] scale-125' : 'bg-white/40 hover:bg-white/80'
+            }`}
+            aria-label={`Go to slide ${i + 1}`}
+          />
+        ))}
+      </div>
+
       {/* Content */}
-      <div className="relative z-20 text-center px-4 max-w-5xl mx-auto flex flex-col items-center">
+      <div className="relative z-20 text-center px-4 max-w-5xl mx-auto flex flex-col items-center pointer-events-none">
         <motion.span 
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
@@ -114,7 +123,7 @@ export default function Hero() {
           className="font-serif text-5xl sm:text-6xl md:text-8xl font-bold text-paper mb-6 flex flex-wrap justify-center gap-x-4"
         >
           {titleWords.map((word, i) => (
-            <motion.span key={i} variants={prefersReducedMotion ? {} : wordVariants} className="inline-block">
+            <motion.span key={i} variants={prefersReducedMotion ? {} : wordVariants} className="inline-block pointer-events-auto">
               {word}
             </motion.span>
           ))}
@@ -129,7 +138,7 @@ export default function Hero() {
           Where Creativity Meets Tradition
         </motion.p>
         
-        <div className="flex flex-col sm:flex-row gap-4 items-center justify-center">
+        <div className="flex flex-col sm:flex-row gap-4 items-center justify-center pointer-events-auto">
           <Link
             href="/societies"
             className="px-8 py-3 rounded-full bg-white/10 backdrop-blur-md border border-white/20 text-paper hover:bg-white/20 hover:border-white/40 transition-all duration-300 text-lg font-medium"
@@ -146,7 +155,7 @@ export default function Hero() {
       </div>
 
       {/* Scroll Indicator */}
-      <div className="absolute bottom-10 left-1/2 transform -translate-x-1/2 z-10">
+      <div className="absolute bottom-10 left-1/2 transform -translate-x-1/2 z-30">
         <Link href="#fest" className="text-paper/50 hover:text-paper transition-colors flex flex-col items-center" aria-label="Scroll down">
           <svg 
             className={`w-8 h-8 ${prefersReducedMotion ? '' : 'animate-bounce'}`} 

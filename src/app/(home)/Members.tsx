@@ -15,15 +15,15 @@ export default async function Members() {
 
   const MemberCard = ({ member, sizeClass, imgSizeClass }: { member: any, sizeClass: string, imgSizeClass: string }) => (
     <div className={`text-center flex flex-col items-center group ${sizeClass}`}>
-      <div className={`relative ${imgSizeClass} mb-4 overflow-hidden rounded-full border-4 border-violet/30 group-hover:border-violet transition-colors duration-500`}>
+      <div className={`relative ${imgSizeClass} mb-4 overflow-hidden rounded-full border-4 border-[#7B2FF7]/30 group-hover:border-[#7B2FF7] transition-colors duration-500`}>
         <img 
           src={member.photoUrl || member.imageUrl || '/placeholder-avatar.jpg'} 
           alt={member.name}
           className="w-full h-full object-cover filter grayscale group-hover:grayscale-0 transition-all duration-500"
         />
       </div>
-      <h3 className="font-serif font-semibold text-paper leading-tight">{member.name}</h3>
-      <p className="text-sm text-paper/60 mt-1 uppercase tracking-wider text-[0.65rem] md:text-xs">{member.role}</p>
+      <h3 className="font-serif font-semibold text-[#0F0B1E] dark:text-[#FFF8EC] leading-tight">{member.name}</h3>
+      <p className="text-sm text-[#0F0B1E]/60 dark:text-[#FFF8EC]/60 mt-1 uppercase tracking-wider text-[0.65rem] md:text-xs">{member.role}</p>
     </div>
   );
 
@@ -31,8 +31,8 @@ export default async function Members() {
     <section id="team" className="section-padding max-w-6xl mx-auto overflow-hidden">
       <ScrollAnimationWrapper direction="up">
         <div className="text-center mb-16">
-          <h2 className="font-serif text-4xl md:text-5xl text-paper font-bold uppercase tracking-widest drop-shadow-lg">Cast & Crew</h2>
-          <p className="text-paper/50 mt-2 font-mono text-sm tracking-widest">IIITA CULTURAL COUNCIL 2026</p>
+          <h2 className="font-serif text-4xl md:text-5xl text-[#0F0B1E] dark:text-[#FFF8EC] font-bold uppercase tracking-widest">Cast & Crew</h2>
+          <p className="text-[#0F0B1E]/50 dark:text-[#FFF8EC]/50 mt-2 font-mono text-sm tracking-widest">IIITA CULTURAL COUNCIL 2026</p>
         </div>
       </ScrollAnimationWrapper>
 

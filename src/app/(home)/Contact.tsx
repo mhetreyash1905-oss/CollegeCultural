@@ -47,14 +47,14 @@ export default function Contact() {
   };
 
   return (
-    <section id="contact" className="section-padding bg-indigo-base">
+    <section id="contact" className="section-padding">
       <div className="max-w-6xl mx-auto">
         <ScrollAnimationWrapper>
           <div className="text-center mb-16">
-            <h2 className="font-serif text-4xl md:text-5xl font-bold text-paper">
+            <h2 className="font-serif text-4xl md:text-5xl font-bold text-[#0F0B1E] dark:text-[#FFF8EC]">
               Get in Touch
             </h2>
-            <p className="mt-4 text-paper/60 text-lg max-w-2xl mx-auto">
+            <p className="mt-4 text-[#0F0B1E]/60 dark:text-[#FFF8EC]/60 text-lg max-w-2xl mx-auto">
               Have a question or want to collaborate? We&apos;d love to hear from you.
             </p>
           </div>
@@ -146,53 +146,53 @@ export default function Contact() {
           {/* Contact Info */}
           <ScrollAnimationWrapper direction="right">
             <div className="space-y-8">
-              <div className="bg-paper/5 border border-paper/10 rounded-2xl p-8">
-                <h3 className="font-serif text-xl font-bold text-paper mb-6">
+              <div className="bg-black/5 dark:bg-white/5 border border-black/10 dark:border-white/10 rounded-2xl p-8">
+                <h3 className="font-serif text-xl font-bold text-[#0F0B1E] dark:text-[#FFF8EC] mb-6">
                   Contact Information
                 </h3>
                 <div className="space-y-4">
                   <div className="flex items-start gap-4">
-                    <div className="w-10 h-10 bg-violet/20 rounded-lg flex items-center justify-center flex-shrink-0">
-                      <svg className="w-5 h-5 text-violet" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <div className="w-10 h-10 bg-[#7B2FF7]/20 rounded-lg flex items-center justify-center flex-shrink-0">
+                      <svg className="w-5 h-5 text-[#7B2FF7]" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                         <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
                       </svg>
                     </div>
                     <div>
-                      <p className="text-sm text-paper/50">Email</p>
-                      <p className="text-paper">cultural@iiita.ac.in</p>
+                      <p className="text-sm text-[#0F0B1E]/50 dark:text-[#FFF8EC]/50">Email</p>
+                      <p className="text-[#0F0B1E] dark:text-[#FFF8EC]">cultural@iiita.ac.in</p>
                     </div>
                   </div>
 
                   <div className="flex items-start gap-4">
-                    <div className="w-10 h-10 bg-coral/20 rounded-lg flex items-center justify-center flex-shrink-0">
-                      <svg className="w-5 h-5 text-coral" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <div className="w-10 h-10 bg-[#FF4D6D]/20 rounded-lg flex items-center justify-center flex-shrink-0">
+                      <svg className="w-5 h-5 text-[#FF4D6D]" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                         <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" />
                         <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 11a3 3 0 11-6 0 3 3 0 016 0z" />
                       </svg>
                     </div>
                     <div>
-                      <p className="text-sm text-paper/50">Location</p>
-                      <p className="text-paper">IIIT Allahabad</p>
-                      <p className="text-paper/60 text-sm">Deoghat, Jhalwa, Prayagraj, UP 211015</p>
+                      <p className="text-sm text-[#0F0B1E]/50 dark:text-[#FFF8EC]/50">Location</p>
+                      <p className="text-[#0F0B1E] dark:text-[#FFF8EC]">IIIT Allahabad</p>
+                      <p className="text-[#0F0B1E]/60 dark:text-[#FFF8EC]/60 text-sm">Deoghat, Jhalwa, Prayagraj, UP 211015</p>
                     </div>
                   </div>
 
                   <div className="flex items-start gap-4">
-                    <div className="w-10 h-10 bg-marigold/20 rounded-lg flex items-center justify-center flex-shrink-0">
-                      <svg className="w-5 h-5 text-marigold" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <div className="w-10 h-10 bg-[#FFC93C]/20 rounded-lg flex items-center justify-center flex-shrink-0">
+                      <svg className="w-5 h-5 text-[#FFC93C]" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                         <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" />
                       </svg>
                     </div>
                     <div>
-                      <p className="text-sm text-paper/50">Office Hours</p>
-                      <p className="text-paper">Mon – Fri, 5:00 PM – 8:00 PM</p>
+                      <p className="text-sm text-[#0F0B1E]/50 dark:text-[#FFF8EC]/50">Office Hours</p>
+                      <p className="text-[#0F0B1E] dark:text-[#FFF8EC]">Mon – Fri, 5:00 PM – 8:00 PM</p>
                     </div>
                   </div>
                 </div>
               </div>
 
-              <div className="bg-paper/5 border border-paper/10 rounded-2xl p-8">
-                <h3 className="font-serif text-xl font-bold text-paper mb-4">
+              <div className="bg-black/5 dark:bg-white/5 border border-black/10 dark:border-white/10 rounded-2xl p-8">
+                <h3 className="font-serif text-xl font-bold text-[#0F0B1E] dark:text-[#FFF8EC] mb-4">
                   Follow Us
                 </h3>
                 <div className="flex gap-4">
@@ -201,7 +201,7 @@ export default function Contact() {
                       <a
                         key={platform}
                         href="#"
-                        className="w-10 h-10 bg-paper/10 hover:bg-violet/30 rounded-lg flex items-center justify-center text-paper/60 hover:text-paper transition-colors"
+                        className="w-10 h-10 bg-black/10 dark:bg-white/10 hover:bg-[#7B2FF7]/30 rounded-lg flex items-center justify-center text-[#0F0B1E]/60 dark:text-[#FFF8EC]/60 hover:text-[#0F0B1E] dark:hover:text-[#FFF8EC] transition-colors"
                         aria-label={`Follow us on ${platform}`}
                       >
                         <span className="text-xs font-semibold">
