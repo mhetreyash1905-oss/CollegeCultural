@@ -30,6 +30,13 @@ export default function Hero() {
     setCurrentIndex((prev) => (prev - 1 + images.length) % images.length);
   };
 
+  // Auto-advance slideshow
+  useEffect(() => {
+    if (images.length <= 1) return;
+    const interval = setInterval(nextSlide, 5000);
+    return () => clearInterval(interval);
+  }, [images.length]);
+
   const titleWords = ["Cultural", "Council"];
 
   const containerVariants = {
